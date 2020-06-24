@@ -33,7 +33,6 @@ linux
 linux-firmware
 mesa
 mpv
-mupdf
 ncdu
 neofetch
 neomutt
@@ -74,4 +73,7 @@ xorg-xbacklight
 xorg-xinit
 xwallpaper
 youtube-dl
+zathura
+zathura-cb
+zathura-pdf-mupdf
 zsh
