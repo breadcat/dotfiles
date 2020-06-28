@@ -71,6 +71,7 @@ xf86-video-intel
 xorg-server
 xorg-xbacklight
 xorg-xinit
+xorg-xsetroot
 xwallpaper
 youtube-dl
 zathura
