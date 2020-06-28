@@ -1,0 +1,25 @@
+#! /bin/sh
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+
+bspc config border_width            2
+bspc config window_gap              10
+bspc config focus_follows_pointer   true
+bspc config split_ratio             0.52
+bspc config borderless_monocle      true
+bspc config gapless_monocle         true
+bspc config single_monocle          true
+
+# Autostarts
+xwallpaper --no-randr --center ~/.config/wallpaper/g7SYnji.jpg & # set wallpaper
+picom & # compositor
+xset r rate 300 50 & # speed up repeated keys
+xset -b & # disable beeps
+xsetroot -cursor_name left_ptr & # change cursor to pointer
+polybar example & # start bar
+redshift & # screen dimming
+xbanish & # hide cursor
+dunst & # notifications
+sxhkd & # hotkeys
+syncthing -no-browser & # file syncronization
+setxkbmap gb -option caps:escape & # set keyboard layour
