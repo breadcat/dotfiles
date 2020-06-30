@@ -13,6 +13,9 @@ bspc config pointer_action2         move
 bspc config pointer_action2         resize_side
 bspc config pointer_action3         resize_corner
 
+# Application rules
+bspc rule -a Zathura state=tiled
+
 # Autostarts
 xwallpaper --no-randr --center ~/.config/wallpaper/g7SYnji.jpg & # set wallpaper
 picom & # compositor
