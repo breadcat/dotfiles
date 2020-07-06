@@ -33,7 +33,7 @@ Print
 
 # alt-tab like a scrub
 alt + {_,shift +} Tab
-	bspc node -f {next,prev}
+	bspc node -f {next,prev}.local
 
 # quit/restart bspwm
 super + alt + {q,r}
