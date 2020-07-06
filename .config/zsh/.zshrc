@@ -2,6 +2,7 @@
 
 export SYNCDIR="$HOME/vault"
 
+alias screenoff='sleep 0.5s && xset dpms force off'
 # dotfiles alias: dotfiles config --local status.showUntrackedFiles no
 alias dotfiles='git --git-dir=$SYNCDIR/src/dotfiles/ --work-tree=$HOME'
 
