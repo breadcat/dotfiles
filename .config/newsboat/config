@@ -1,0 +1,9 @@
+
+# config
+auto-reload yes
+browser firefox
+
+# keybinds
+
+# macros
+macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "firefox %u"
