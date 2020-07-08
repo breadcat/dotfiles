@@ -199,10 +199,10 @@ type = internal/date
 interval = 5
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "%A %d %B,"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %R
+time-alt = %R
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -225,7 +225,7 @@ label-muted = sound muted
 type = internal/battery
 battery = BAT0
 adapter = AC
-full-at = 98
+full-at = 96
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
