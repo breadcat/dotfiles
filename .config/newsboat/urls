@@ -8,6 +8,7 @@ https://feed43.com/5258853627627388.xml "blog"
 https://uncommoncore.co/feed/ "blog" "finance"
 https://www.blogger.com/feeds/3846116389579818553/posts/default "blog" "~Hamilton Morris"
 https://www.gov.uk/government/organisations/advisory-council-on-the-misuse-of-drugs.atom "blog" "~ACMD"
+https://www.hetzner-status.de/en.atom
 https://www.rifters.com/crawl/?feed=rss2 "blog" "~Peter Watts"
 ---Comics---
 http://donthitsave.com/donthitsavefeed.xml
@@ -60,6 +61,7 @@ https://blog.linuxserver.io/rss/ "software" "servers" "linux" "~LinuxServerIO"
 https://blog.rogs.me/index.xml "software" "servers" "linux" "~Rogs"
 https://community.ubnt.com/ubnt/rss/board?board.id=Blog_EdgeMAX "software" "~EdgeMAX"
 https://debian-administration.org/atom.xml "software" "linux" "~Debian Security"
+https://dolphin-emu.org/blog/feeds/ "software" "emulation"
 https://f-droid.org/feed "android" "software" "~F-Droid"
 https://jvns.ca/atom.xml "software" "linux" "~Julie Evans"
 https://k1ss.org/blog/blog.xml "software" "linux" "~Kiss Linux"
@@ -197,6 +199,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCjr2bPAyPV7t35MvcgT3W8Q "yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCl7mAGnY4jh4Ps8rhhh8XZg "youtube" "blog" "travel" "~SerpentZA"
 https://www.youtube.com/feeds/videos.xml?channel_id=UClcE-kVhqyiHCcjYwcpfj9w "youtube" "software" "~Live Overflow"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "youtube" "linux" "software" "~Brodie Robertson"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmGSJVG3mCRXVOP4yZrU1Dw "youtube" "learning" "~Johnny Harris"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCmb8hO2ilV9vRa8cilis88A "youtube" "learning" "~Thunderf00t"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCmvXfmJEtURCEtHNbMXfDqg "youtube" "animation" "review" "~HotDiggedyDemon"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCn8OYopT9e8tng-CGEWzfmw "youtube" "learning" "history" "~Atrocity Guide"
