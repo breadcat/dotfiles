@@ -27,5 +27,5 @@ redshift & # screen dimming
 xbanish & # hide cursor
 dunst & # notifications
 sxhkd & # hotkeys
-syncthing -no-browser & # file syncronization
+syncthing & # file syncronization
 setxkbmap -layout gb -option caps:escape & # set keyboard layour
