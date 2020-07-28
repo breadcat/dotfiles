@@ -8,6 +8,7 @@ export VISUAL=nvim
 # Exports to move certain files around
 export LESSHISTFILE="-"
 export PASSWORD_STORE_DIR="$HOME/vault/pass"
+export PATH="$PATH:$HOME/.local/bin"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
