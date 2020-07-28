@@ -32,7 +32,7 @@ set incsearch=true
 set default-font=DejaVu Sans
 
 # The font family used as the default for content using monospace font.
-set monospace-font=DejaVu Sans Mono
+set monospace-font=Hack
 
 # The font family used as the default for content using sans-serif font.
 set sans-serif-font=DejaVu Sans
@@ -41,10 +41,10 @@ set sans-serif-font=DejaVu Sans
 set serif-font=DejaVu Serif
 
 # The default font size used to display text.
-set font-size=16
+set font-size=14
 
 # Default font size for the monospace font.
-set monospace-font-size=13
+set monospace-font-size=12
 
 # Default Full-Content zoom level in percent. Default is 100.
 set default-zoom=100
@@ -53,7 +53,7 @@ set default-zoom=100
 # additional parameters.
 
 # Search shortcuts
-shortcut-default s
+shortcut-default searx
 shortcut-add a=https://www.amazon.co.uk/s?k=$0
 shortcut-add ap=https://www.archlinux.org/packages/?sort=&q=$0
 shortcut-add apk=https://apk-dl.com/$0
@@ -95,9 +95,9 @@ shortcut-add osm=https://www.openstreetmap.org/search?query=$0
 shortcut-add pc=https://pcgamingwiki.com/w/index.php?search=$0&title=Special%3ASearch
 shortcut-add plus=https://partner.plus.net/account/search?strType=ENDUSER_LOOKUP&strCriteria=$0
 shortcut-add rt=https://www.rottentomatoes.com/search/?search=$0
-shortcut-add s=https://searx.minskio.co.uk/?q=$0
+shortcut-add searx=https://searx.minskio.co.uk/?q=$0
 shortcut-add ss=https://steamspy.com/search.php?s=$0
-shortcut-add st=https://store.steampowered.com/search/?term=$0
+shortcut-add s=https://store.steampowered.com/search/?term=$0
 shortcut-add start=https://www.startpage.com/do/metasearch.pl?query=$0
 shortcut-add t=https://tineye.com/parse?url=$0
 shortcut-add tg=https://thegamesdb.net/search.php?name=$0
