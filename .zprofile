@@ -1,5 +1,5 @@
 # Default applications
-export BROWSER=firefox
+export BROWSER=vimb
 export EDITOR=nvim
 export READER=zathura
 export TERMINAL=termite

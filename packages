@@ -14,8 +14,6 @@ dunst
 epub2txt
 ffmpeg
 file
-firefox
-firefox-i18n-en-gb
 fuse2
 fzf
 git
@@ -63,6 +61,7 @@ termite
 tmux
 ttf-hack
 unzip
+vimb
 wget
 wol
 wpa_supplicant

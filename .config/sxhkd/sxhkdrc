@@ -6,9 +6,17 @@
 super + Return
 	termite
 
+# web browser
+super + {_,shift + }w
+	vimb {_,-i}
+
+# file browser
+super + e
+	$TERMINAL -e lf
+
 # program launcher
-super + @space
-	rofi -show run
+super + d
+	rofi -show drun -theme launcher
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -24,7 +32,7 @@ XF86Audio{Mute,LowerVolume,RaiseVolume}
 
 # screenshot
 Print
-    scrot '%Y-%m-%d_%H-%M-%S.png'
+    scrot 'pictures/scrot_%Y-%m-%d_%H-%M-%S.png'
 
 
 #
@@ -40,7 +48,7 @@ super + alt + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -58,6 +66,8 @@ super + g
 #
 # state/flags
 #
+
+# toggle window state?
 
 # set the window state
 super + {t,shift + t,s,f}

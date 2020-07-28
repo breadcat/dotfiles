@@ -2,7 +2,7 @@
 # config
 show-read-feeds no
 auto-reload yes
-browser firefox
+browser vimb
 cache-file "~/.config/newsboat/cache.db"
 
 # keybinds
@@ -10,4 +10,4 @@ bind-key RIGHT open
 bind-key LEFT quit
 
 # macros
-macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "firefox %u"
+macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
