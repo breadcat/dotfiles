@@ -11,6 +11,8 @@ export PASSWORD_STORE_DIR="$HOME/vault/pass"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_DESKTOP_DIR="$HOME"
+export XDG_DOWNLOAD_DIR="$HOME/downloads"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Startx on boot
