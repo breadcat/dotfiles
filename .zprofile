@@ -3,7 +3,7 @@ export BROWSER=vimb
 export EDITOR=nvim
 export READER=zathura
 export TERMINAL=termite
-export VISUAL=nvim
+export VISUAL=$EDITOR
 
 # Exports to move certain files around
 export LESSHISTFILE="-"
