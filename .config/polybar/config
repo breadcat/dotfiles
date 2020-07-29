@@ -35,7 +35,7 @@ height = 26
 ;offset-y = 1%
 radius = 0.0
 fixed-center = false
-bottom = true
+bottom = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -127,18 +127,10 @@ label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
-
 [module/xbacklight]
 type = internal/xbacklight
 format = <label>
 label = BL %percentage%
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
