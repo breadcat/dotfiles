@@ -7,7 +7,6 @@ base-devel
 bc
 beets
 bspwm
-cmus
 curl
 dhcpcd
 dunst
@@ -32,6 +31,7 @@ linux-firmware
 mesa
 mpv
 ncdu
+ncmpcpp
 neofetch
 neomutt
 neovim
