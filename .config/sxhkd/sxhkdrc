@@ -8,7 +8,7 @@ super + Return
 
 # web browser
 super + {_,shift + }w
-	vimb {_,-i}
+	$BROWSER {_,-i}
 
 # file browser
 super + e
