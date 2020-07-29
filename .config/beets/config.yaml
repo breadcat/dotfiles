@@ -1,0 +1,28 @@
+
+directory: ~/media/audio
+plugins: fetchart embedart bpd replaygain lastgenre chroma missing lyrics the ftintitle zero
+art_filename: "00 albumart"
+album_art_maxwidth: 500
+threaded: yes
+original_date: no
+per_disc_numbering: no
+duplicate_action: ask
+asciify_paths: yes
+
+paths:
+    default: music/%the{$albumartist}/$original_year $album%aunique{}/$track $title
+    singleton: singles/%the{$artist} - $title
+    comp: compilations/$album%aunique{}/$track $title
+    albumtype:soundtrack: soundtracks/$album%aunique{}/$track $title
+
+import:
+    move: yes
+    resume: ask
+    incremental: yes
+    quiet_fallback: yes
+    timid: no
+    log: importer.log
+
+replaygain:
+    auto: album
+    backend: gstreamer
