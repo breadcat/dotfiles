@@ -1,8 +1,12 @@
 
-set clipboard+=unnamedplus
+" Set options
 set nocompatible
+set clipboard+=unnamedplus
+set ignorecase
 set nohlsearch
 set number
+set smartcase
+set mouse=a
 syntax on
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
