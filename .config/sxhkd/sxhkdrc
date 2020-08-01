@@ -8,7 +8,7 @@ super + Return
 
 # web browser
 super + {_,shift + }w
-	$BROWSER {_,-i}
+	$BROWSER {_,--private-window}
 
 # file browser
 super + e
