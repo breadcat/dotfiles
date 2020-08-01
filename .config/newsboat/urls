@@ -48,8 +48,8 @@ https://politepol.com/feed/47195
 https://store.steampowered.com/feeds/news.xml "news" "gaming"
 ---News---
 http://feeds.feedburner.com/Torrentfreak "news"
-https://feeds.thelocal.com/rss/no "news" "nordic"
-https://feeds.thelocal.com/rss/se "news" "nordic"
+https://feeds.thelocal.com/rss/no "news" "nordic" "~TheLocal.no"
+https://feeds.thelocal.com/rss/se "news" "nordic" "~TheLocal.se"
 https://www.anandtech.com/rss/ "news" "technology"
 https://www.parkrun.org.uk/brighouse/feed/ "news" "lifestyle"
 ---Literature---
