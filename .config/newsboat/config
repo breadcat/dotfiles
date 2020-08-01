@@ -2,8 +2,8 @@
 # config
 show-read-feeds no
 auto-reload yes
-browser vimb
-cache-file "~/.config/newsboat/cache.db"
+browser $BROWSER
+cache-file "~/.local/cache/newsboat/cache.db"
 
 # keybinds
 bind-key RIGHT open
