@@ -6,6 +6,8 @@ set ignorecase
 set nohlsearch
 set number
 set smartcase
+set title
+set titlestring=%f\ %m
 set mouse=a
 syntax on
 
