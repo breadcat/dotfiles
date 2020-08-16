@@ -39,7 +39,7 @@ font-2 = Font Awesome 5 Free Solid:pixelsize=9;2
 font-3 = Font Awesome 5 Brands:pixelsize=9;2
 
 modules-left = bspwm xwindow
-modules-right = filesystem xbacklight alsa memory cpu wlan eth battery temperature date powermenu
+modules-right = rss filesystem xbacklight alsa memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -81,6 +81,16 @@ label-urgent-padding = 2
 label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
+
+[module/rss]
+type = custom/script
+exec = newsboat -x print-unread | awk '{print $1}'
+interval = 1800
+click-left = $TERMINAL -e newsboat
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+label = %output%
 
 [module/xbacklight]
 type = internal/xbacklight
