@@ -25,7 +25,6 @@ xsetroot -cursor_name left_ptr & # change cursor to pointer
 polybar example & # start bar
 redshift & # screen dimming
 xbanish & # hide cursor
-dunst & # notifications
 sxhkd & # hotkeys
 syncthing & # file syncronization
 setxkbmap -layout gb -option caps:escape & # set keyboard layour
