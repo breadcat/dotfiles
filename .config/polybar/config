@@ -28,7 +28,7 @@ border-bottom-size = 1
 border-color = #cfcfcf
 
 padding-left = 0
-padding-right = 1
+padding-right = 3
 
 module-margin-left = 2
 module-margin-right = 2
