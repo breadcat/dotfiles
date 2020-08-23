@@ -84,8 +84,8 @@ label-empty-padding = 2
 
 [module/rss]
 type = custom/script
-exec = newsboat -x print-unread | awk '{print $1}'
-interval = 1800
+exec = pgrep newsboat || newsboat -x print-unread | awk '{print $1}'
+interval = 600
 click-left = $TERMINAL -e newsboat &
 format = <label>
 format-prefix = " "
@@ -182,7 +182,7 @@ format-charging = <ramp-capacity> <label-charging>
 
 format-discharging = <ramp-capacity> <label-discharging>
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 
 ramp-capacity-0 = 
