@@ -16,6 +16,7 @@ alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles/" --work-tree="$HOME"'
 alias screenoff='sleep 0.5s && xset dpms force off'
 
 # functions
+function fractodec() { echo "scale=2; $1" | bc ; }
 function ytsearch() { mpv "ytdl://ytsearch:\"$1\"" ; }
 
 # bindkeys
