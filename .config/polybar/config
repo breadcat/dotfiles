@@ -17,6 +17,9 @@ height = 26
 radius = 0.0
 fixed-center = false
 bottom = false
+enable-ipc = true
+;override-redirect = true
+wm-restack = bspwm
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -84,7 +87,7 @@ label-empty-padding = 2
 
 [module/rss]
 type = custom/script
-exec = pgrep newsboat || newsboat -x print-unread | awk '{print $1}'
+exec = if pgrep -x newsboat >/dev/null; then echo Running; else newsboat -x print-unread | awk '{print $1}'; fi
 interval = 600
 click-left = $TERMINAL -e newsboat &
 format = <label>
@@ -221,23 +224,27 @@ label-open = ""
 label-open-foreground = ${colors.secondary}
 label-close =  cancel
 label-close-foreground = ${colors.secondary}
-label-separator = |
+label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
 menu-0-0-exec = menu-open-1
 menu-0-1 = power off
 menu-0-1-exec = menu-open-2
-
+menu-0-2 = logout
+menu-0-2-exec = menu-open-3
 menu-1-0 = cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
-
 menu-2-0 = power off
 menu-2-0-exec = sudo poweroff
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
+menu-3-0 = cancel
+menu-3-0-exec = menu-open-0
+menu-3-1 = logout
+menu-3-1-exec = bspc quit && killall redshift
 
 [settings]
 screenchange-reload = true
