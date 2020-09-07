@@ -25,7 +25,7 @@ set -x XDG_DESKTOP_DIR "$HOME"
 set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
 
 # Command aliases
-alias dotedit='find "$XDG_CONFIG_HOME" -maxdepth 2 -type f | fzf --preview "cat {}" -- layout reverse | xargs -r "$EDITOR"'
+alias dotedit='find "$XDG_CONFIG_HOME" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias screenoff='sleep 0.5s && xset dpms force off'
 
