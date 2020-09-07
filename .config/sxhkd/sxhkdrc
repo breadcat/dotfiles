@@ -34,6 +34,9 @@ XF86Audio{Mute,LowerVolume,RaiseVolume}
 Print
     scrot 'pictures/scrot_%Y-%m-%d_%H-%M-%S.png'
 
+# toggle polybar visibility
+super + b
+	polybar-msg cmd toggle
 
 #
 # bspwm hotkeys
@@ -86,8 +89,8 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+# 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
