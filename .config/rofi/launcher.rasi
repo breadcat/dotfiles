@@ -1,0 +1,59 @@
+
+configuration {
+    modi: "drun";
+    click-to-exit: true;
+    show-icons: false;
+    cycle: false;
+    m: "-1";
+    scroll-method: 0;
+}
+
+
+* {
+    background: #1d1f21;
+    font: "Noto 10";
+    text-color: #eceff4;
+    background-color: @background;
+    padding: 10px;
+}
+
+#window {
+    width: 30%;
+    /* y-offset: 10%; */
+}
+
+#mainbox {
+    /* spacing:    0px; */
+    children:    [inputbar, listview];
+}
+
+#textbox {
+    text-color:   #1d1f21;
+    background-color: @background;
+}
+
+#listview {
+    fixed-height:   false;
+    dynamic:    true;
+    lines: 10;
+    spacing: 0px;
+    padding: 0px -10px;
+}
+
+#element {
+    border:     0;
+    padding:    10px;
+}
+
+#element selected {
+    text-color: #5f819d;
+}
+
+#inputbar {
+    children: [entry];
+    spacing:    0px;
+}
+
+#entry {
+    padding:    1px 0px;
+}
