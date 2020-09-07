@@ -14,6 +14,7 @@ epub2txt
 ffmpeg
 file
 firefox
+fish
 fuse2
 fzf
 git
@@ -77,4 +78,3 @@ youtube-dl
 zathura
 zathura-cb
 zathura-pdf-mupdf
-zsh
