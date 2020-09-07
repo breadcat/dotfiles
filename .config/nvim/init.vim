@@ -1,14 +1,16 @@
 
 " Set options
 set nocompatible
+let mapleader =","
 set clipboard+=unnamedplus
 set ignorecase
+set linebreak
+set mouse=a
 set nohlsearch
 set number
 set smartcase
 set title
 set titlestring=%f\ %m
-set mouse=a
 syntax on
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
