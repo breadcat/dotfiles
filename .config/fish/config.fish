@@ -34,9 +34,7 @@ function fractodec; echo "scale=2; $argv" | bc; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
 
 # Prompt, inspired by Oxide by Dikiaap
-function fish_prompt
-	echo && set_color green; echo (dirs) && set_color normal; printf "❯ "
-end
+function fish_prompt; echo && set_color green; echo (dirs) && set_color normal; printf "❯ "; end
 
 # Colour scheme
 set -x fish_color_autosuggestion 585858
