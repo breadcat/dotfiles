@@ -1,5 +1,10 @@
-map c recolor
-map b toggle_statusbar
-map f toggle_fullscreen
-map = zoom in
-map _ zoom out
+map [normal] c recolor
+map [fullscreen] c recolor
+map [normal] b toggle_statusbar
+map [fullscreen] b toggle_statusbar
+map [normal] f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map [normal] = zoom in
+map [fullscreen] = zoom in
+map [normal] _ zoom out
+map [fullscreen] _ zoom out
