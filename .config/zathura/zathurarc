@@ -1,4 +1,5 @@
 map c recolor
 map b toggle_statusbar
+map f toggle_fullscreen
 map = zoom in
 map _ zoom out
