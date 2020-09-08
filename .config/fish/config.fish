@@ -28,6 +28,7 @@ set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
 alias bandit='mpv "https://p11.p4groupaudio.com/P11_MM"'
 alias dotedit='find "$XDG_CONFIG_HOME" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
+alias empties='find . -maxdepth 2 -mount -not -path "*/\.*" -empty'
 alias screenoff='sleep 0.5s && xset dpms force off'
 
 # Functions
