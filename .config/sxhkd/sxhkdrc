@@ -32,7 +32,7 @@ XF86Audio{Mute,LowerVolume,RaiseVolume}
 
 # screenshot
 Print
-    scrot 'pictures/scrot_%Y-%m-%d_%H-%M-%S.png'
+    mkdir -p "$HOME/pictures" && scrot "$HOME/pictures/scrot_%F_%H-%M-%S.png" -e 'optipng -o7 $f'
 
 # toggle polybar visibility
 super + b
