@@ -33,6 +33,9 @@ alias screenoff='sleep 0.5s && xset dpms force off'
 function fractodec; echo "scale=2; $argv" | bc; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
 
+# Rclone config symlink
+if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/dockerfiles/rclone.conf"; ln -s "$SYNCDIR/src/dockerfiles" "$XDG_CONFIG_HOME/rclone"; end
+
 # Prompt, inspired by Oxide by Dikiaap
 function fish_prompt; echo && set_color green; echo (dirs) && set_color normal; printf "❯ "; end
 
