@@ -18,7 +18,7 @@ set -x SYNCDIR $HOME/vault
 set -x LESSHISTFILE "-"
 set -x PASSWORD_STORE_DIR "$HOME/vault/pass"
 set -x PATH "$PATH:$HOME/.local/bin"
-set -x XATHORITY "$XDG_RUNTIME_DIR/Xauthority"
+set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_DESKTOP_DIR "$HOME"
