@@ -26,6 +26,7 @@ set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
 
 # Command aliases
 alias bandit='mpv "https://p11.p4groupaudio.com/P11_MM"'
+alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
 alias dotedit='find "$XDG_CONFIG_HOME" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 2 -mount -not -path "*/\.*" -empty'
