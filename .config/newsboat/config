@@ -1,7 +1,7 @@
 
 # config
 show-read-feeds no
-auto-reload yes
+# auto-reload yes
 browser $BROWSER
 cache-file "~/.local/cache/newsboat/cache.db"
 
@@ -11,3 +11,4 @@ bind-key LEFT quit
 
 # macros
 macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
+macro n set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"

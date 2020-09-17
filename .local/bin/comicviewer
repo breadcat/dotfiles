@@ -1,0 +1,15 @@
+#!/bin/bash
+
+input="$1"
+function grab() { curl "$input" --silent ; }
+function viewer() { xargs curl --silent | imv - ; }
+
+if [[ $input =~ xkcd.com ]]
+then
+	grab | awk '/hotlinking/ {print $NF}'| viewer
+elif [[ $input =~ dilbert.com ]]
+then
+	grab | awk -F\" '/data-image/ {print $2}' | viewer
+else
+	echo "Unsupported Website."
+fi
