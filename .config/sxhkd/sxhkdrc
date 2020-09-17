@@ -10,9 +10,9 @@ super + Return
 super + {_,shift + }w
 	$BROWSER {_,--private-window}
 
-# file browser
-super + e
-	$TERMINAL -e lf
+# file browser, space analyser
+super + {_,shift + }e
+	$TERMINAL -e {lf,ncdu $HOME}
 
 # program launcher
 super + d
