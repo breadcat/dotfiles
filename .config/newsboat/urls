@@ -13,15 +13,15 @@ https://www.rifters.com/crawl/?feed=rss2 "blog" "~Peter Watts"
 ---Comics---
 http://donthitsave.com/donthitsavefeed.xml
 http://extrafabulouscomics.com/feed/
-http://feeds.feedburner.com/buttersafe
+http://feed.dilbert.com/dilbert/daily_strip
 http://feeds.feedburner.com/Explosm
 http://feeds.feedburner.com/InvisibleBread
 http://feeds.feedburner.com/PoorlyDrawnLines
-http://feeds.feedburner.com/satwcomic
 http://feeds.feedburner.com/SpaceAvalanche
 http://feeds.feedburner.com/ThingsInSquares
+http://feeds.feedburner.com/buttersafe
+http://feeds.feedburner.com/satwcomic
 http://onegianthand.com/rss
-http://feed.dilbert.com/dilbert/daily_strip
 http://theoatmeal.com/feed/rss "comics" "~The Oatmeal"
 http://www.commitstrip.com/en/feed/
 http://www.jimbenton.com/page14/files/feed.xml
@@ -39,6 +39,7 @@ https://tapas.io/rss/series/9326
 https://what-if.xkcd.com/feed.atom
 https://www.eatmypaint.co.uk/feed/
 https://www.rustledjimmies.net/comic/feed.json "comics" "~Rustled Jimmies"
+https://www.smbc-comics.com/comic/rss
 https://www.woodenplankstudios.com/feed/
 https://xkcd.com/rss.xml
 ---Games---
@@ -65,7 +66,7 @@ https://blog.rogs.me/index.xml "software" "servers" "linux" "~Rogs"
 https://community.ubnt.com/ubnt/rss/board?board.id=Blog_EdgeMAX "software" "~EdgeMAX"
 https://debian-administration.org/atom.xml "software" "linux" "~Debian Security"
 https://dolphin-emu.org/blog/feeds/ "software" "emulation"
-https://drewdevault.com/blog/index.xml
+https://drewdevault.com/blog/index.xml "software" "~Drew DeVault"
 https://f-droid.org/feed "android" "software" "~F-Droid"
 https://jvns.ca/atom.xml "software" "linux" "~Julie Evans"
 https://k1ss.org/blog/blog.xml "software" "linux" "~Kiss Linux"
@@ -227,6 +228,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCr3cBLTYmIK9kY0F_OdFWFQ "yo
 https://www.youtube.com/feeds/videos.xml?channel_id=UCrTNhL_yO3tPTdQ5XgmmWjA "youtube" "review" "movies" "~RedLetterMedia"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCrUL8K81R4VBzm-KOYwrcxQ "youtube" "linux" "software" "~Engineer Man"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCs-w7E2HZWwXmjt9RTvBB_A "youtube" "gaming" "~Settled"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsP7Bpw36J666Fct5M8u-ZA "youtube" "learning" "~How to Cook That"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsXVk37bltHxD1rDPwtNM8Q "youtube" "learning" "animation" "~Kurzgesagt"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsm-uFE1pEJnmySSCRTStaA "youtube" "lifestyle" "~Thoughtworthy"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg "youtube" "software" "hardware" "linux" "~Wolfgang"
