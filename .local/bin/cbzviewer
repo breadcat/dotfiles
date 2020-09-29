@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function rotate {
+	xrandr -o "$1"
+	}
+
+function main {
+	input="$1"
+	temp_dir=$(mktemp -d)
+	rotate left &
+	# rotate input if detected
+	unzip "$input" -d "$temp_dir"
+	# xdotool click, pinch
+	imv "$temp_dir"/* -f -r
+	rotate normal &
+	rm -r "$temp_dir"
+	}
+
+main "$@"
