@@ -15,8 +15,9 @@ set -x EMAIL (whoami)@$DOMAIN
 set -x SYNCDIR $HOME/vault
 
 # Exports to move certain files around
+set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -x LESSHISTFILE "-"
-set -x PASSWORD_STORE_DIR "$HOME/vault/pass"
+set -x PASSWORD_STORE_DIR "$SYNCDIR/docs/passwords"
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XDG_CONFIG_HOME "$HOME/.config"
