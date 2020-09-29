@@ -35,6 +35,7 @@ alias screenoff='sleep 0.5s && xset dpms force off'
 
 # Functions
 function fractodec; echo "scale=2; $argv" | bc; end
+function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
 
 # Rclone config symlink
