@@ -20,6 +20,9 @@ fuse2
 fzf
 git
 grub
+gst-plugins-bad
+gst-plugins-good
+gst-plugins-ugly
 htop
 imagemagick
 imv
