@@ -88,8 +88,9 @@ label-empty-padding = 2
 [module/rss]
 type = custom/script
 exec = if pgrep -x newsboat >/dev/null; then echo Running; else newsboat -x print-unread | awk '{print $1}'; fi
-interval = 600
+interval = 300
 click-left = $TERMINAL -e newsboat &
+click-right = newsboat -x reload &
 format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
