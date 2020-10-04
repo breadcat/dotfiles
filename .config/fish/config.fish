@@ -24,6 +24,7 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_DESKTOP_DIR "$HOME"
 set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
+set -x XINITRC "$XDG_CONFIG_HOME"/X11/xinitrc
 
 # Command aliases
 alias bandit='mpv "https://p11.p4groupaudio.com/P11_MM"'
@@ -78,6 +79,6 @@ set -x fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 # Start X at login
 if status is-login
     if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty
+        exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
     end
 end
