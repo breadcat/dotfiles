@@ -46,6 +46,10 @@ super + b
 alt + {_,shift +} Tab
 	bspc node -f {next,prev}.local
 
+# super-space to swap direction
+super + space
+	bspc node @/ -R 90
+
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
