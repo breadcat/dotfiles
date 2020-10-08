@@ -20,4 +20,5 @@ elif [[ $input =~ satwcomic ]]; then grab | awk -F\" '/art/ && /core/ {print $4}
 elif [[ $input =~ smbc-comics.com ]]; then grab | tr "\"" "\n" | awk '/\/comics/ {print $1;exit}' | viewer
 elif [[ $input =~ theoatmeal.com ]]; then grab | awk -F\" '/comics/ && /img src/ {print $2}' | viewer
 elif [[ $input =~ toothpastefordinner.com ]]; then grab | awk -F\" '/max-width/ {print $4}' | viewer
+elif [[ $input =~ woodenplankstudios.com.com ]]; then grab | tr "\"" "\n" | awk '/scaled/ {print $1}' | viewer
 else echo "Unsupported Website."; fi
