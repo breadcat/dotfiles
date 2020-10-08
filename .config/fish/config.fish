@@ -69,7 +69,6 @@ set -x fish_color_selection white\x1e\x2d\x2dbold\x1e\x2d\x2dbackground\x3dbrbla
 set -x fish_color_status red
 set -x fish_color_user brgreen
 set -x fish_color_valid_path \x2d\x2dunderline
-set -x fish_greeting \x1d
 set -x fish_key_bindings fish_default_key_bindings
 set -x fish_pager_color_completion normal
 set -x fish_pager_color_description B3A06D\x1eyellow
