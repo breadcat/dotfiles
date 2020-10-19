@@ -8,7 +8,12 @@ cache-file "~/.local/cache/newsboat/cache.db"
 # keybinds
 bind-key RIGHT open
 bind-key LEFT quit
+bind-key a toggle-article-read
 
 # macros
 macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 macro n set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
+
+# filters
+ignore-article "https://store.steampowered.com/feeds/news.xml" "title =~ \"Team Fortress 2 Update Released\""
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCq6VFHwMzcMXbuKyG7SQYIg" "title =~ \"Official Podcast\""
