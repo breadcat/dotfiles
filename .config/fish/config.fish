@@ -24,15 +24,18 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_DESKTOP_DIR "$HOME"
 set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
-set -x XINITRC "$XDG_CONFIG_HOME"/X11/xinitrc
+set -x XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
+alias irssi='irssi --config="$XDG_CONFIG_HOME/irssi/config" --home="$XDG_DATA_HOME/irssi"'
 
 # Command aliases
+alias absolute='mpv "https://ais.absoluteradio.co.uk/absolute60shigh.aac"'
 alias bandit='mpv "https://p11.p4groupaudio.com/P11_MM"'
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
 alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 2 -mount -not -path "*/\.*" -empty'
 alias screenoff='sleep 0.5s && xset dpms force off'
+alias vaultedit='find "$SYNCDIR" -maxdepth 4 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 
 # Functions
 function fractodec; echo "scale=2; $argv" | bc; end
