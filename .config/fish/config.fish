@@ -79,8 +79,4 @@ set -x fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -x fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 
 # Start X at login
-if status is-login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx "$XDG_CONFIG_HOME/X11/xinitrc" -- -keeptty
-    end
-end
+if status is-login; if test -z "$DISPLAY" -a "$XDG_VTNR" = 1; exec startx "$XINITRC" -- -keeptty; end; end
