@@ -1,18 +1,17 @@
 #!/bin/bash
 
-function rotate {
-	xrandr -o "$1"
-	}
-
 function main {
 	input="$1"
+	touchscreen=$(xinput -list | awk -F"\t" '/Finger/ {print $1}' | tr -cd '[:alnum:] ' | xargs)
 	temp_dir=$(mktemp -d)
-	rotate left &
+	xrandr -o left &
+	xinput set-prop "$touchscreen" --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1 &
 	# rotate input if detected
 	unzip "$input" -d "$temp_dir"
 	# xdotool click, pinch
 	imv "$temp_dir"/* -f -r
-	rotate normal &
+	xrandr -o normal &
+	xinput set-prop "$touchscreen" --type=float "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0
 	rm -r "$temp_dir"
 	}
 
