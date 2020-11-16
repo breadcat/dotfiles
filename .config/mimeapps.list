@@ -1,3 +1,4 @@
 
 [Default Applications]
 image/webp=imv.desktop
+application/octet-stream=mpv.desktop
