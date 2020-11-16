@@ -1,0 +1,21 @@
+#!/bin/bash
+
+station="$1"
+shopt -s expand_aliases
+alias _play='mpv'
+
+if [[ $station =~ youtube ]]; then _play "$1"
+elif [[ $station =~ 00s ]]; then _play "https://ais.absoluteradio.co.uk/absolute00shigh.aac"
+elif [[ $station =~ 10s ]]; then _play "https://ais.absoluteradio.co.uk/absolute10shigh.aac"
+elif [[ $station =~ 20s ]]; then _play "https://stream-mz.planetradio.co.uk/webcast3high.aac"
+elif [[ $station =~ 60s ]]; then _play "https://ais.absoluteradio.co.uk/absolute60shigh.aac"
+elif [[ $station =~ 70s ]]; then _play "https://ais.absoluteradio.co.uk/absolute70shigh.aac"
+elif [[ $station =~ 80s ]]; then _play "https://ais.absoluteradio.co.uk/absolute80shigh.aac"
+elif [[ $station =~ 90s ]]; then _play "https://ais.absoluteradio.co.uk/absolute90shigh.aac"
+elif [[ $station =~ absolute ]]; then _play "https://ais.absoluteradio.co.uk/absoluteradiohigh.aac"
+elif [[ $station =~ bandit ]]; then _play "https://p11.p4groupaudio.com/P11_MM"
+elif [[ $station =~ classic ]]; then _play "https://ais.absoluteradio.co.uk/absoluteclassicrockhigh.aac"
+elif [[ $station =~ planet ]]; then _play "https://stream-mz.planetradio.co.uk/planetrock.aac"
+elif [[ $station =~ sam ]]; then _play "https://stream-mz.planetradio.co.uk/net1bristol.aac"
+elif [[ $station =~ x ]]; then _play "https://media-ssl.musicradio.com/RadioXUK"
+else printf "Stations available:\n%s" "$(awk '/^elif/ {print $5}' "$0" | sort | tr "\n" " ")" ; fi
