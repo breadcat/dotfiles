@@ -8,6 +8,9 @@ interface=$(ip a | awk -F": " '/wlp/ {print $2}')
 runfile=/run/wpa_supplicant/$interface
 ping_test=1.1.1.1
 
+# existing connection check
+ping -c 1 "$ping_test" && printf "\nAlready connceted!" && exit
+
 # runfile check
 if [ -f "$runfile" ] ; then echo Removing Runfile && rm "$runfile" ; fi
 
