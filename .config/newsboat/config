@@ -15,6 +15,8 @@ macro m set browser "mpv %u" ; open-in-browser-and-mark-read ; set browser "$BRO
 macro n set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 
 # filters
-ignore-article "https://store.steampowered.com/feeds/news.xml" "title =~ \"Update Released\""
-ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCq6VFHwMzcMXbuKyG7SQYIg" "title =~ \"Official Podcast\""
+ignore-article "https://store.steampowered.com/feeds/news.xml" "title =~ \"Update\""
+ignore-article "https://uncommoncore.co/feed/" "title =~ \"Transcript\""
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCLXo7UDZvByw2ixzpQCufnA" "title =~ \"Advertiser\""
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UC_c1gdsojLxBGkgzS0NsvUw" "title =~ \"Maddox News\""
+ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCq6VFHwMzcMXbuKyG7SQYIg" "title =~ \"Official Podcast\""
