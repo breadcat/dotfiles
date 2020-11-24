@@ -1,15 +1,17 @@
 
+# Options
+set page-padding 1
+set show-scrollbars false
+set selection-clipboard clipboard
+
 # Keyboard maps
-map [normal] c recolor
-map [fullscreen] c recolor
-map [normal] b toggle_statusbar
-map [fullscreen] b toggle_statusbar
-map [normal] f toggle_fullscreen
-map [fullscreen] f toggle_fullscreen
-map [normal] = zoom in
-map [fullscreen] = zoom in
-map [normal] _ zoom out
-map [fullscreen] _ zoom out
+map = zoom in
+map _ zoom out
+map D toggle_page_mode
+map b toggle_statusbar
+map c recolor
+map f toggle_fullscreen
+map r rotate
 
 # Colours
 set recolor-darkcolor "#c5c8c6"
