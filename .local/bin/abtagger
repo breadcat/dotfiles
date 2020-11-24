@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# check for opustags
+if [[ ! "$(command -v opustags)" ]]; then
+	printf "Opustags is required to run this script, please install\n"
+	exit 1
+fi
+
+for i in *.opus; do
+	printf "Processing: %s... " "$i"
+	opustags -i -D "$i"
+	opustags -i -s "GENRE=Audiobook" "$i"
+	artist=$(printf "%s" "$i" | awk -F\- '{print $1}' | xargs)
+	opustags -i -s "ARTIST=$artist" "$i"
+	if [[ "$i" == *"#"* ]]; then
+		# series
+		album=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $1}' | xargs)
+		track=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $2}' | awk '{gsub ("^0*",""); print}' | xargs)
+		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $3}' | xargs)
+		opustags -i -s "ALBUM=$album" "$i"
+		opustags -i -s "TRACKNUMBER=$track" "$i"
+		opustags -i -s "TITLE=$title" "$i"
+	else
+		# single
+		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $2}' | xargs)
+		opustags -i -s "TITLE=$title" "$i"
+	fi
+	printf "Done.\n"
+done
