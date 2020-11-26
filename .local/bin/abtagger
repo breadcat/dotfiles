@@ -6,23 +6,26 @@ if [[ ! "$(command -v opustags)" ]]; then
 	exit 1
 fi
 
+# strip whitespace function
+function _strip { awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0}' ; }
+
 for i in *.opus; do
 	printf "Processing: %s... " "$i"
 	opustags -i -D "$i"
 	opustags -i -s "GENRE=Audiobook" "$i"
-	artist=$(printf "%s" "$i" | awk -F\- '{print $1}' | xargs)
+	artist=$(printf "%s" "$i" | awk -F\- '{print $1}' | _strip)
 	opustags -i -s "ARTIST=$artist" "$i"
 	if [[ "$i" == *"#"* ]]; then
 		# series
-		album=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $1}' | xargs)
-		track=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $2}' | awk '{gsub ("^0*",""); print}' | xargs)
-		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $3}' | xargs)
+		album=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $1}' | _strip)
+		track=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $2}' | awk '{gsub ("^0*",""); print}' | _strip)
+		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $3}' | _strip)
 		opustags -i -s "ALBUM=$album" "$i"
 		opustags -i -s "TRACKNUMBER=$track" "$i"
 		opustags -i -s "TITLE=$title" "$i"
 	else
 		# single
-		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $2}' | xargs)
+		title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $2}' | _strip)
 		opustags -i -s "TITLE=$title" "$i"
 	fi
 	printf "Done.\n"
