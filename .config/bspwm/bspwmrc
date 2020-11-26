@@ -21,9 +21,9 @@ xwallpaper --no-randr --stretch ~/.config/wallpaper/wallhaven-qdwqel.jpg & # set
 xset r rate 300 50 & # speed up repeated keys
 xset -b & # disable beeps
 xsetroot -cursor_name left_ptr & # change cursor to pointer
-polybar example & # start bar
-redshift & # screen dimming
-xbanish & # hide cursor
-sxhkd & # hotkeys
-syncthing & # file syncronization
+pidof polybar || polybar example & # panel
+pidof redshift || redshift & # screen dimming
+pidof xbanish || xbanish & # hide cursor
+pidof sxhkd || sxhkd & # hotkeys
+pidof syncthing || syncthing & # file syncronization
 setxkbmap -layout gb -option caps:escape & # set keyboard layour
