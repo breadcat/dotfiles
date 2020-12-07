@@ -2,6 +2,7 @@
 " Set options
 set nocompatible
 let mapleader =","
+set backspace=indent,eol,start
 set clipboard+=unnamedplus
 set ignorecase
 set linebreak
@@ -12,6 +13,10 @@ set smartcase
 set title
 set titlestring=%f\ %m
 syntax on
+
+" Key remapping
+inoremap <C-H> <C-W>
+imap <C-Del> X<Esc>ce<del>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e

@@ -48,6 +48,10 @@ if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/do
 # Prompt, inspired by Oxide by Dikiaap
 function fish_prompt; echo && set_color green; echo (dirs) && set_color normal; printf "❯ "; end
 
+# Keybinds
+bind \cH backward-kill-path-component
+bind \e\[3\;5~ kill-word
+
 # Colour scheme
 set -x fish_color_autosuggestion 585858
 set -x fish_color_cancel \x2dr
