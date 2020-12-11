@@ -32,7 +32,7 @@ alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG
 alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
-alias mpv-hdmi='mpv --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
+alias mpv-hdmi='xrandr --output HDMI1 --mode 1366x768 ; mpv --fs --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && xset dpms force off'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 
