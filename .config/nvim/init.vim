@@ -16,7 +16,7 @@ syntax on
 
 " Key remapping
 inoremap <C-H> <C-W>
-imap <C-Del> X<Esc>ce<del>
+inoremap <C-Del> X<Esc>ce<del>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
