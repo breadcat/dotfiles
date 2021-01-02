@@ -17,6 +17,8 @@ configuration {
 window {
     width: 25%;
     orientation: vertical;
+    border: 1px;
+    border-color: #eceff4;
 }
 
 mainbox {
@@ -26,9 +28,6 @@ mainbox {
 textbox {
     text-color:   #1d1f21;
     background-color: #1d1f21;
-}
-
-listview {
 }
 
 element {
