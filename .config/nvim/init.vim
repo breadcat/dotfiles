@@ -15,8 +15,9 @@ set titlestring=%f\ %m
 syntax on
 
 " Key remapping
-inoremap <C-H> <C-W>
-inoremap <C-Del> X<Esc>ce<del>
+map <C-H> <C-W>
+map <C-Del> X<Esc>ce<del>
+map <F8> :setlocal spell! spelllang=en_gb<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
