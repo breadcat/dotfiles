@@ -40,6 +40,7 @@ alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --
 function fractodec; echo "scale=2; $argv" | bc; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
+function vat; math "$argv + ($argv * 0.2)"; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]:00" -to "$argv[3]:00" -c copy split-$argv[1]; end
 
