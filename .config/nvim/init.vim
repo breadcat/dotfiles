@@ -12,6 +12,7 @@ set number
 set smartcase
 set title
 set titlestring=%f\ %m
+set whichwrap+=<,>,h,l,[,]
 syntax on
 
 " Key remapping
