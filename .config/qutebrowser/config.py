@@ -1960,6 +1960,7 @@ c.url.searchengines = {
         'osrs': 'https://oldschool.runescape.wiki/?title=Special%3ASearch&search={}',
         'pc': 'https://pcgamingwiki.com/w/index.php?search={}&title=Special%3ASearch',
         'plus': 'https://partner.plus.net/account/search?strType=ENDUSER_LOOKUP&strCriteria={}',
+        'rfc': 'https://tools.ietf.org/html/rfc{}',
         'rshs': 'https://secure.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1={}',
         'rt': 'https://www.rottentomatoes.com/search/?search={}',
         's': 'https://searx.minskio.co.uk/?q={}',
