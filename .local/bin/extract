@@ -1,27 +1,26 @@
 #!/bin/sh
 
-# A general, all-purpose extraction script. #
-
-# Author: Luke Smith
-
+# A general, all-purpose extraction script. Not all extraction programs here
+# are installed by LARBS automatically.
+#
 # Default behavior: Extract archive into new directory
 # Behavior with `-c` option: Extract contents into current directory
 
 while getopts "hc" o; do case "${o}" in
 	c) extracthere="True" ;;
-	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n" && exit ;;
+	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n" && exit 1 ;;
 esac done
 
 if [ -z "$extracthere" ]; then
 	archive="$(readlink -f "$*")" &&
 	directory="$(echo "$archive" | sed 's/\.[^\/.]*$//')" &&
 	mkdir -p "$directory" &&
-	cd "$directory" || exit
+	cd "$directory" || exit 1
 else
-	archive="$(readlink -f "$(echo "$*" | cut -d' ' -f2)")"
+	archive="$(readlink -f "$(echo "$*" | cut -d' ' -f2)" 2>/dev/null)"
 fi
 
-[ "$archive" = "" ] && printf "Give archive to extract as argument.\\n" && exit
+[ -z "$archive" ] && printf "Give archive to extract as argument.\\n" && exit 1
 
 if [ -f "$archive" ] ; then
 	case "$archive" in
