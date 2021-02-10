@@ -12,12 +12,16 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
-# config.load_autoconfig(True)
+config.load_autoconfig(True)
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
+c.aliases = {
+        'o': 'open',
+        'q': 'close'
+        }
 
 ## Time interval (in milliseconds) between auto-saves of
 ## config/cookies/etc.
@@ -1907,11 +1911,85 @@
 ## the search engine name to the search term, e.g. `:open google
 ## qutebrowser`.
 ## Type: Dict
-# c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
+c.url.searchengines = {
+        'DEFAULT': 'https://duckduckgo.com/?q={}',
+        '*': 'https://www.startpage.com/do/metasearch.pl?query={}',
+        'a': 'https://www.amazon.co.uk/s?k={}',
+        'ap': 'https://www.archlinux.org/packages/?sort=&q={}',
+        'apk': 'https://apk-dl.com/{}',
+        'arc': 'https://web.archive.org/web/*/{}',
+        'aur': 'https://aur.archlinux.org/packages/?O=0&K={}',
+        'aw': 'https://wiki.archlinux.org/index.php?search={}&title=Special%3ASearch',
+        'b': 'http://bugmenot.com/view/{}',
+        'bok': 'https://b-ok.xyz/s/{}',
+        'cb': 'https://comicvine.gamespot.com/search/?q={}',
+        'choco': 'https://chocolatey.org/packages?q={}',
+        'crm': 'http://10.32.2.10/suitecrm/index.php?action=UnifiedSearch&module=Home&search_form=false&advanced=false&query_string={}',
+        'cron': 'https://crontab.guru/#{}',
+        'd': 'https://start.duckduckgo.com/?q={}',
+        'deb': 'https://packages.debian.org/{}',
+        'dock': 'https://hub.docker.com/search/?pullCount=1&q={}',
+        'domain': 'https://shop.gandi.net/en/domain/suggest?search={}',
+        'down': 'https://downforeveryoneorjustme.com/{}',
+        'e': 'https://www.ebay.co.uk/sch/i.html?_nkw={}',
+        'eco': 'https://www.ecosia.org/search?q={}',
+        'f': 'https://search.f-droid.org/?q={}&lang=en',
+        'g': 'https://www.google.co.uk/search?q={}',
+        'gamma': 'https://www.gamma-portal.com/voip/ipdc/searchInput.jspa#{}',
+        'ge': 'https://www.ge-tracker.com/names/{}',
+        'gf': 'https://gamefaqs.gamespot.com/search?game={}',
+        'gist': 'https://gist.github.com/search?utf8=%E2%9C%93&q={}',
+        'git': 'https://github.com/search?q={}',
+        'gl': 'https://www.google.co.uk/search?btnI=1&q={}',
+        'gm': 'https://www.google.co.uk/maps/search/{}',
+        'gog': 'https://www.gog.com/games?search={}',
+        'gr': 'https://www.goodreads.com/search?utf8=%E2%9C%93&query={}',
+        'i': 'https://www.google.co.uk/search?tbm=isch&q={}',
+        'im': 'https://www.imdb.com/find?ref_=nv_sr_fn&s=all&q={}',
+        'ip': 'https://www.ip2location.com/demo/{}',
+        'iu': 'https://www.google.co.uk/searchbyimage?site=search&image_url={}',
+        'jack': 'https://jack.minskio.co.uk/UI/Dashboard#search={}',
+        'lut': 'https://lutris.net/games?q={}',
+        'm': 'https://wego.here.com/search/{}',
+        'mac': 'https://api.macvendors.com/{}',
+        'mb': 'https://musicbrainz.org/search?type=artist&limit=25&method=indexed&query={}',
+        'mx': 'https://mxtoolbox.com/SuperTool.aspx?action={}',
+        'nano': 'https://nanode.co/account/{}',
+        'no': 'https://enno.dict.cc/?s={}',
+        'osm': 'https://www.openstreetmap.org/search?query={}',
+        'osrs': 'https://oldschool.runescape.wiki/?title=Special%3ASearch&search={}',
+        'pc': 'https://pcgamingwiki.com/w/index.php?search={}&title=Special%3ASearch',
+        'plus': 'https://partner.plus.net/account/search?strType=ENDUSER_LOOKUP&strCriteria={}',
+        'rshs': 'https://secure.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1={}',
+        'rt': 'https://www.rottentomatoes.com/search/?search={}',
+        's': 'https://searx.minskio.co.uk/?q={}',
+        'ss': 'https://steamspy.com/search.php?s={}',
+        'st': 'https://store.steampowered.com/search/?term={}',
+        't': 'https://tineye.com/parse?url={}',
+        'tg': 'https://thegamesdb.net/search.php?name={}',
+        'tm': 'https://www.themoviedb.org/search?query={}',
+        'tor': 'https://iknowwhatyoudownload.com/en/peer/?ip={}',
+        'tr': 'https://translate.yandex.com/?lang=no-en&text={}',
+        'tv': 'https://www.thetvdb.com/search?query={}',
+        'tvt': 'https://tvtropes.org/pmwiki/search_result.php?q={}',
+        'ud': 'https://www.urbandictionary.com/define.php?term={}',
+        'w': 'https://en.wikipedia.org/w/index.php?search={}&title=Special:Search',
+        'wa': 'https://www.wolframalpha.com/input/?i={}',
+        'whois': 'https://whois.gandi.net/en/results?search={}',
+        'wine': 'https://www.winehq.org/search?q={}',
+        'wno': 'https://no.wikipedia.org/w/index.php?search={}&title=Special:Search',
+        'wt': 'https://en.wiktionary.org/w/index.php?search={}&title=Special:Search',
+        'wtno': 'https://no.wiktionary.org/w/index.php?search={}&title=Special:Search',
+        'xbtc': 'https://currencio.co/btc/gbp/{}/',
+        'xmr': 'https://currencio.co/xmr/gbp/{}/',
+        'xnano': 'https://currencio.co/nano/gbp/{}/',
+        'y': 'https://www.youtube.com/results?search_query={}'
+        }
+
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-# c.url.start_pages = ['https://start.duckduckgo.com']
+c.url.start_pages = ['https://start.duckduckgo.com']
 
 ## URL parameters to strip with `:yank url`.
 ## Type: List of String
