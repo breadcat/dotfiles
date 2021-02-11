@@ -3,7 +3,7 @@
 set fish_greeting
 
 # Default application
-set -x BROWSER firefox
+set -x BROWSER qutebrowser
 set -x EDITOR nvim
 set -x READER zathura
 set -x TERMINAL termite

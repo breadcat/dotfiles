@@ -14,7 +14,6 @@ dunst
 epub2txt
 ffmpeg
 file
-firefox
 fish
 fuse2
 fzf
@@ -55,6 +54,7 @@ pngcrush
 pulseaudio
 pulsemixer
 qpdf
+qutebrowser
 rclone
 redshift
 retroarch
