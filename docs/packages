@@ -37,6 +37,7 @@ linux
 linux-firmware
 mesa
 mpv
+mupdf
 ncdu
 ncmpcpp
 neofetch
@@ -53,6 +54,7 @@ pass-otp
 pngcrush
 pulseaudio
 pulsemixer
+python-adblock
 qpdf
 qutebrowser
 rclone
@@ -81,5 +83,3 @@ xorg-xinit
 xorg-xsetroot
 xwallpaper
 youtube-dl
-zathura
-zathura-pdf-mupdf
