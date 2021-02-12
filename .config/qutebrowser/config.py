@@ -20,7 +20,7 @@ config.load_autoconfig(True)
 # c.aliases = {'w': 'session-save', 'q': 'close', 'qa': 'quit', 'wq': 'quit --save', 'wqa': 'quit --save'}
 c.aliases = {
         'o': 'open',
-        'q': 'close'
+        'q': 'tab-close'
         }
 
 ## Time interval (in milliseconds) between auto-saves of
@@ -1713,7 +1713,7 @@ c.aliases = {
 ##   - startpage: Load the start page.
 ##   - default-page: Load the default page.
 ##   - close: Close the window.
-# c.tabs.last_close = 'ignore'
+c.tabs.last_close = 'close'
 
 ## Maximum width (in pixels) of tabs (-1 for no maximum). This setting
 ## only applies when tabs are horizontal. This setting does not apply to
