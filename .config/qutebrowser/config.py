@@ -663,7 +663,7 @@ c.aliases = {
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
-# c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
 
 ## Enable the ad/host blocker
 ## Type: Bool
@@ -679,7 +679,7 @@ c.aliases = {
 ## lists.  The file `~/.config/qutebrowser/blocked-hosts` is always read
 ## if it exists.
 ## Type: List of Url
-# c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
+c.content.blocking.hosts.lists = ['https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts']
 
 ## Which method of blocking ads should be used.  Support for Adblock Plus
 ## (ABP) syntax blocklists using Brave's Rust library requires the
@@ -692,7 +692,7 @@ c.aliases = {
 ##   - adblock: Use Brave's ABP-style adblocker
 ##   - hosts: Use hosts blocking
 ##   - both: Use both hosts blocking and Brave's ABP-style adblocker
-# c.content.blocking.method = 'auto'
+c.content.blocking.method = 'both'
 
 ## A list of patterns that should always be loaded, despite being blocked
 ## by the ad-/host-blocker. Local domains are always exempt from
@@ -1641,7 +1641,7 @@ c.aliases = {
 ##   - always: Always show the statusbar.
 ##   - never: Always hide the statusbar.
 ##   - in-mode: Show the statusbar when in modes other than normal mode.
-# c.statusbar.show = 'always'
+c.statusbar.show = 'in-mode'
 
 ## List of widgets displayed in the statusbar.
 ## Type: List of String
@@ -2072,7 +2072,7 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind('<Ctrl-N>', 'open -w')
 # config.bind('<Ctrl-PgDown>', 'tab-next')
 # config.bind('<Ctrl-PgUp>', 'tab-prev')
-# config.bind('<Ctrl-Q>', 'quit')
+config.bind('<Ctrl-Q>', 'tab-close')
 # config.bind('<Ctrl-Return>', 'selection-follow -t')
 # config.bind('<Ctrl-Shift-N>', 'open -p')
 # config.bind('<Ctrl-Shift-T>', 'undo')
@@ -2092,6 +2092,8 @@ config.bind('<Ctrl-Tab>', 'tab-prev')
 # config.bind('<F11>', 'fullscreen')
 # config.bind('<F5>', 'reload')
 # config.bind('<Return>', 'selection-follow')
+config.bind('<Alt-Left>', 'back')
+config.bind('<Alt-Right>', 'forward')
 # config.bind('<back>', 'back')
 # config.bind('<forward>', 'forward')
 # config.bind('=', 'zoom')
@@ -2159,7 +2161,7 @@ config.bind('<Ctrl-Tab>', 'tab-prev')
 # config.bind('o', 'set-cmd-text -s :open')
 # config.bind('pP', 'open -- {primary}')
 # config.bind('pp', 'open -- {clipboard}')
-# config.bind('q', 'macro-record')
+config.bind('q', 'nop')
 # config.bind('r', 'reload')
 # config.bind('sf', 'save')
 # config.bind('sk', 'set-cmd-text -s :bind')
