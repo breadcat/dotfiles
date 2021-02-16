@@ -1,0 +1,13 @@
+
+# basic settings
+set icons true
+set ignorecase true
+
+# key mappings
+map . set hidden!
+map <delete> delete
+map <enter> shell
+map d delete
+map i $imv -r *
+map j $lf -remote "send $id select '$(fzf)'"
+map gv cd ~/vault
