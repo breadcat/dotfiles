@@ -25,7 +25,6 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_DESKTOP_DIR "$HOME"
 set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
 set -x XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
-alias irssi='irssi --config="$XDG_CONFIG_HOME/irssi/config" --home="$XDG_DATA_HOME/irssi"'
 
 # Command aliases
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
