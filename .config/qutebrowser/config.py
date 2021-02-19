@@ -663,7 +663,15 @@ c.aliases = {
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
-c.content.blocking.adblock.lists = ['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']
+c.content.blocking.adblock.lists = [
+    'https://easylist.to/easylist/easylist.txt',
+    'https://easylist.to/easylist/easyprivacy.txt',
+    'https://easylist.to/easylist/fanboy-social.txt',
+    'https://pub.minskio.co.uk/adblock.txt',
+    'https://secure.fanboy.co.nz/fanboy-annoyance.txt',
+    'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt',
+    'https://www.i-dont-care-about-cookies.eu/abp/'
+    ]
 
 ## Enable the ad/host blocker
 ## Type: Bool
@@ -850,7 +858,7 @@ c.content.blocking.method = 'both'
 ## QtWebEngine, writing the clipboard as response to a user interaction
 ## is always allowed.
 ## Type: Bool
-# c.content.javascript.can_access_clipboard = False
+c.content.javascript.can_access_clipboard = True
 
 ## Allow JavaScript to close tabs.
 ## Type: Bool
@@ -942,7 +950,7 @@ c.content.blocking.method = 'both'
 ##   - true
 ##   - false
 ##   - ask
-# c.content.notifications = 'ask'
+c.content.notifications = False
 
 ## Allow pdf.js to view PDF files in the browser. Note that the files can
 ## still be downloaded by clicking the download button in the pdf.js
@@ -1622,7 +1630,7 @@ c.content.blocking.method = 'both'
 ##   - tr-TR: Turkish (Turkey)
 ##   - uk-UA: Ukrainian (Ukraine)
 ##   - vi-VN: Vietnamese (Viet Nam)
-# c.spellcheck.languages = []
+c.spellcheck.languages = ["en-GB"]
 
 ## Padding (in pixels) for the statusbar.
 ## Type: Padding
@@ -2052,7 +2060,7 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind(';o', 'hint links fill :open {hint-url}')
 # config.bind(';r', 'hint --rapid links tab-bg')
 # config.bind(';t', 'hint inputs')
-# config.bind(';y', 'hint links yank')
+config.bind('t', 'config-cycle tabs.show always switching ;; config-cycle statusbar.show always in-mode')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
@@ -2076,8 +2084,8 @@ config.bind('<Ctrl-Q>', 'tab-close')
 # config.bind('<Ctrl-Return>', 'selection-follow -t')
 # config.bind('<Ctrl-Shift-N>', 'open -p')
 # config.bind('<Ctrl-Shift-T>', 'undo')
-config.bind('<Ctrl-Shift-Tab>', 'tab-next')
-config.bind('<Ctrl-Tab>', 'tab-prev')
+config.bind('<Ctrl-Shift-Tab>', 'tab-prev')
+config.bind('<Ctrl-Tab>', 'tab-next')
 # config.bind('<Ctrl-Shift-W>', 'close')
 # config.bind('<Ctrl-T>', 'open -t')
 # config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
@@ -2129,7 +2137,8 @@ config.bind('<Alt-Right>', 'forward')
 # config.bind('b', 'set-cmd-text -s :quickmark-load')
 # config.bind('cd', 'download-clear')
 # config.bind('co', 'tab-only')
-# config.bind('d', 'tab-close')
+config.bind('d', 'nop')
+config.bind('dd', 'tab-close')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
 # config.bind('g0', 'tab-focus 1')
