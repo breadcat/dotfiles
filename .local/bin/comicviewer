@@ -1,24 +1,30 @@
 #!/bin/bash
 
-input="$1"
-function grab() { curl "$input" -L --silent -A "Mozilla" ; }
-function viewer() { xargs curl --silent -A "Mozilla" | imv - ; }
+shopt -s expand_aliases
+alias _curl='curl -L --silent -A \"Mozilla\"'
+alias _play='mpv --fullscreen'
+alias _view='imv -f -'
+function grab() { _curl "$1" | tr "\"" "\n" ; }
 
-if [[ $input =~ xkcd.com ]]; then grab | awk '/hotlinking/ {print $NF}'| viewer
-elif [[ $input =~ arcaderage.co ]]; then grab | tr "\"" "\n" | awk -F\? '/uploads/ {print $1;exit}' | viewer
-elif [[ $input =~ Buttersafe ]]; then grab | awk -F\" '/\/comics\// {print $2}' | viewer
-elif [[ $input =~ dilbert.com ]]; then grab | awk -F\" '/data-image/ {print $2}' | viewer
-elif [[ $input =~ donthitsave.com ]]; then grab | tr "\"" "\n" | awk '/comicimages/ {print $1;exit}' | viewer
-elif [[ $input =~ commitstrip.com ]]; then grab | awk -F\" '/uploads/ && /wp-content/ {print $2}' | viewer
-elif [[ $input =~ eatmypaint.co.uk ]]; then grab | tr "\"" "\n" | awk '/uploads/ {print $1;exit}' | viewer
-elif [[ $input =~ explosm.net ]]; then grab | awk -F\" '/main-comic/ {print $4}' | cut -f1 -d\? | sed -e 's/^/"https:/' -e 's/$/"/' | viewer
-elif [[ $input =~ extrafabulouscomics.com ]]; then grab | tr "\"" "\n" | awk -F\? '/uploads/ && /?/ {print $1}' | viewer
-elif [[ $input =~ loadingartist.com ]]; then grab | tr "\"" "\n" | awk '/uploads/ && /wp-content/' | viewer
-elif [[ $input =~ onegianthand.com ]]; then grab | tr "\"" "\n" | awk '/media/ && /1280/ {print $1;exit}' | viewer
-elif [[ $input =~ PoorlyDrawnLines ]]; then grab | awk -F"src" '/wp-block-image/ {print $2}' | cut -f2 -d\" | viewer
-elif [[ $input =~ satwcomic ]]; then grab | awk -F\" '/art/ && /core/ {print $4}' | viewer
-elif [[ $input =~ smbc-comics.com ]]; then grab | tr "\"" "\n" | awk '/\/comics/ {print $1;exit}' | viewer
-elif [[ $input =~ theoatmeal.com ]]; then grab | awk -F\" '/comics/ && /img src/ {print $2}' | viewer
-elif [[ $input =~ toothpastefordinner.com ]]; then grab | awk -F\" '/max-width/ {print $4}' | viewer
-elif [[ $input =~ woodenplankstudios.com.com ]]; then grab | tr "\"" "\n" | awk '/scaled/ {print $1}' | viewer
+if [[ $1 =~ youtube.com ]]; then _play "$@"
+elif [[ $1 =~ arcaderage.co ]]; then _curl "$(grab "$@" | awk -F"?" '/uploads/ {print $1;exit}')" | _view
+elif [[ $1 =~ Buttersafe ]]; then _curl "$(grab "$@" | awk '/comics/')" | _view
+elif [[ $1 =~ commitstrip.com ]]; then _curl "$(grab "$@" | awk '/uploads/ && !/Template/')" | _view
+elif [[ $1 =~ dilbert.com ]]; then _curl "$(grab "$@" | awk '/https/ && /amuniversal/ {print $1;exit}')" | _view
+elif [[ $1 =~ donthitsave.com ]]; then _curl "$(grab "$@" | awk todo)" | _view
+elif [[ $1 =~ eatmypaint.co.uk ]]; then _curl "$(grab "$@" | awk '/uploads/ {print $1;exit}')" | _view
+elif [[ $1 =~ explosm.net ]]; then _curl "$(grab "$@" | awk -F"?" '/comics/ && /png/ || /jpg/ {print $1;exit}')" | _view
+elif [[ $1 =~ extrafabulouscomics.com ]]; then _curl "$(grab "$@" | awk todo)" | _view
+elif [[ $1 =~ goodbearcomics ]]; then _curl "$(grab "$@" | grep "$(date +%Y)" | awk '/png/ {print $1;exit}')" | _view
+elif [[ $1 =~ lastplacecomics.com ]]; then _curl "$(grab "$@" | awk '/uploads/ && /content/ {print $1;exit}')" | _view
+elif [[ $1 =~ loadingartist.com ]]; then _curl "$(grab "$@" | awk '/uploads/ && /content/')" | _view
+elif [[ $1 =~ lolnein.com ]]; then _curl "$(grab "$@" | awk '/comics/ && /png/')" | _view
+elif [[ $1 =~ onegianthand.com ]]; then _curl "$(grab "$@" | awk '/media/ && /1280/ {print $1;exit}')" | _view
+elif [[ $1 =~ PoorlyDrawnLines ]]; then _curl "$(grab "$@" | awk '/uploads/ {print $1;exit}')" | _view
+elif [[ $1 =~ satwcomic ]]; then _curl "$(grab "$@" | awk '/\/art\// && ! /thumb/ {print $1;exit}')" | _view
+elif [[ $1 =~ smbc-comics.com ]]; then _curl "$(grab "$@" | awk '/\/comics\// {print $1;exit}')" | _view
+elif [[ $1 =~ theoatmeal.com ]]; then _curl "$(grab "$@" | awk '/comics/ && /amazonaws/')" | _view
+elif [[ $1 =~ toothpastefordinner.com ]]; then _curl "$(grab "$@" | awk '/gif/')" | _view
+elif [[ $1 =~ woodenplankstudios.com ]]; then _curl "$(grab "$@" | awk todo)" | _view
+elif [[ $1 =~ xkcd.com ]]; then _curl "$(grab "$@" | awk '/comics/ && /png/ {print $1;exit}')" | _view
 else echo "Unsupported Website."; fi
