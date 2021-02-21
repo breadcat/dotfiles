@@ -27,6 +27,8 @@ foreground = ${colors.foreground}
 line-size = 2
 line-color = #f00
 
+tray = none
+
 border-bottom-size = 1
 border-color = #cfcfcf
 
