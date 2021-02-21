@@ -16,8 +16,10 @@ bind-key m toggle-show-read-feeds
 macro m set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 
 # filters
+ignore-article "https://hackaday.com/feed/" "title =~ \"Podcast\""
 ignore-article "https://store.steampowered.com/feeds/news.xml" "title =~ \"Update\""
 ignore-article "https://uncommoncore.co/feed/" "title =~ \"Transcript\""
+ignore-article "https://www.anandtech.com/rss/" "title =~ \"Sponsored\""
 ignore-article "https://www.hetzner-status.de/en.atom" "title =~ \"database\""
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCLXo7UDZvByw2ixzpQCufnA" "title =~ \"Advertiser\""
 ignore-article "https://www.youtube.com/feeds/videos.xml?channel_id=UCSc16oMxxlcJSb9SXkjwMjA" "title =~ \"YMS Commentary\""
