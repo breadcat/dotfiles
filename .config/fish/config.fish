@@ -41,7 +41,7 @@ function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
-function sessionexec; grep -i "$argv[1]" "$XDG_DATA_HOME/qutebrowser/sessions/default.yml" | awk '/url/ {print $2}' | xargs "$argv[2]"; end
+function sessionexec; grep -i "$argv[1]" "$XDG_DATA_HOME/qutebrowser/sessions/*.yml" | awk '/url/ {print $2}' | xargs "$argv[2]"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]:00" -to "$argv[3]:00" -c copy split-$argv[1]; end
 
 # Rclone config symlink
