@@ -1,3 +1,4 @@
+autokey-common
 dijo-bin
 epub2txt
 fltrdr
@@ -16,5 +17,6 @@ polybar
 sc-im
 shellcheck-bin
 simple-mtpfs
+ttf-font-awesome-4
 xbanish
 yay-bin

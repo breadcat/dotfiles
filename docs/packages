@@ -1,5 +1,6 @@
 adobe-source-code-pro-fonts
 adobe-source-sans-pro-fonts
+alsa-utils
 aspell
 aspell-en
 base
@@ -11,7 +12,6 @@ cronie
 curl
 dhcpcd
 dunst
-epub2txt
 ffmpeg
 file
 fish
