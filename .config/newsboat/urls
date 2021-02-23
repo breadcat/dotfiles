@@ -46,7 +46,6 @@ https://www.smbc-comics.com/comic/rss
 https://xkcd.com/rss.xml
 ---Games---
 https://blog.humblebundle.com/rss "news" "gaming"
-https://community.chrono.gg/c/daily-deals.rss "news" "gaming" "~chrono.gg"
 https://factorio.com/blog/rss "news" "factorio"
 https://politepol.com/feed/47195
 https://store.steampowered.com/feeds/news.xml "news" "gaming"
@@ -54,7 +53,7 @@ https://store.steampowered.com/feeds/news.xml "news" "gaming"
 http://feeds.feedburner.com/Torrentfreak "news"
 https://feeds.thelocal.com/rss/no "news" "nordic" "~TheLocal.no"
 https://feeds.thelocal.com/rss/se "news" "nordic" "~TheLocal.se"
-https://visualping.io/feeds/_vol_9/_data_955/42b9b932bb25492.xml
+https://visualping.io/feeds/_vol_9/_data_955/42b9b932bb25492.xml "news" "~Torrented Movies"
 https://www.anandtech.com/rss/ "news" "technology"
 https://www.parkrun.org.uk/brighouse/feed/ "news" "lifestyle"
 ---Literature---
