@@ -1,3 +1,6 @@
 
 # ignore errors
 -i
+
+# metadata
+--add-metadata
