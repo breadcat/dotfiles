@@ -2061,7 +2061,7 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind(';r', 'hint --rapid links tab-bg')
 # config.bind(';t', 'hint inputs')
 config.bind('t', 'config-cycle tabs.show always switching ;; config-cycle statusbar.show always in-mode')
-config.bind(',m', 'spam mpv {url}')
+config.bind(',m', 'spawn mpv {url}')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
