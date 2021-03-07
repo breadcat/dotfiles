@@ -1,3 +1,0 @@
-
-# newsboat feed update
-0 * * * * newsboat -x reload

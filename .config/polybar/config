@@ -89,7 +89,7 @@ label-empty-padding = 2
 
 [module/rss]
 type = custom/script
-exec = if pgrep -x newsboat >/dev/null; then echo Running; else newsboat -x print-unread | awk '{print $1}'; fi
+exec = curl --silent "https://rss.minskio.co.uk/public.php?op=getUnread&login=admin"
 interval = 300
 click-left = $TERMINAL -e newsboat &
 click-right = newsboat -x reload &
