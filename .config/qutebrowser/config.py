@@ -1957,6 +1957,7 @@ c.url.searchengines = {
         'ip': 'https://www.ip2location.com/demo/{}',
         'iu': 'https://www.google.co.uk/searchbyimage?site=search&image_url={}',
         'jack': 'https://jack.minskio.co.uk/UI/Dashboard#search={}',
+        'last': 'https://www.last.fm/search?q={}',
         'lut': 'https://lutris.net/games?q={}',
         'm': 'https://wego.here.com/search/{}',
         'mac': 'https://api.macvendors.com/{}',
