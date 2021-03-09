@@ -1972,7 +1972,7 @@ c.url.searchengines = {
         'rfc': 'https://tools.ietf.org/html/rfc{}',
         'rshs': 'https://secure.runescape.com/m=hiscore_oldschool/hiscorepersonal?user1={}',
         'rt': 'https://www.rottentomatoes.com/search/?search={}',
-        's': 'https://searx.minskio.co.uk/?q={}',
+        's': 'https://search.privacytools.io/searx/?q={}',
         'ss': 'https://steamspy.com/search.php?s={}',
         'st': 'https://store.steampowered.com/search/?term={}',
         't': 'https://tineye.com/parse?url={}',
