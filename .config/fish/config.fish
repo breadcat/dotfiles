@@ -5,7 +5,7 @@ set fish_greeting
 # Default application
 set -x BROWSER qutebrowser
 set -x EDITOR nvim
-set -x READER zathura
+set -x READER mupdf
 set -x TERMINAL termite
 set -x VISUAL $EDITOR
 
