@@ -11,6 +11,8 @@ bind-key RIGHT open
 bind-key LEFT quit
 bind-key a toggle-article-read
 bind-key m toggle-show-read-feeds
+bind-key n next-unread
+bind-key N prev-unread
 
 # macros
 macro m set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
