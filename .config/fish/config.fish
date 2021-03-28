@@ -14,6 +14,9 @@ set -x DOMAIN minskio.co.uk
 set -x EMAIL (whoami)@$DOMAIN
 set -x SYNCDIR $HOME/vault
 
+# Bitwarden session variable
+if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDIR/docs/secure/bitwarden.env"); end
+
 # Exports to move certain files around
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -x LESSHISTFILE "-"
