@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# assign variables
+filename=${1%%.*}
+if [ -z "$2" ]; then language=nob; else language=$2; fi
+if [ -z "$3" ]; then destination=.; else destination=$3; fi
+stream=$(ffmpeg -i "$1" 2>&1 | awk -v lang="$language" -F"[#(]" '$0~lang {print $2}')
+output_filename=$(printf %s/%s_%s.srt "$destination" "$filename" "$language")
+
+# dump subtitle
+ffmpeg -i "$1" -c copy -map "$stream" "$output_filename"
+
+# remove empty file
+if [ ! -s "$output_filename" ]; then rm "$output_filename" ; fi
