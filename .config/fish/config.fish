@@ -3,16 +3,16 @@
 set fish_greeting
 
 # Default application
-set -x BROWSER qutebrowser
-set -x EDITOR nvim
-set -x READER mupdf
-set -x TERMINAL termite
-set -x VISUAL $EDITOR
+set -gx BROWSER qutebrowser
+set -gx EDITOR nvim
+set -gx READER mupdf
+set -gx TERMINAL termite
+set -gx VISUAL $EDITOR
 
 # Personal variables
-set -x DOMAIN minskio.co.uk
-set -x EMAIL (whoami)@$DOMAIN
-set -x SYNCDIR $HOME/vault
+set -gx DOMAIN minskio.co.uk
+set -gx EMAIL (whoami)@$DOMAIN
+set -gx SYNCDIR $HOME/vault
 
 # Bitwarden session variable
 if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDIR/docs/secure/bitwarden.env"); end
