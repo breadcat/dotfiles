@@ -2,6 +2,9 @@
 # Disable greeting
 set fish_greeting
 
+# Disable command not found handler
+function __fish_command_not_found_handler --on-event fish_command_not_found; echo "fish: Unknown command '$argv'"; end
+
 # Default application
 set -gx BROWSER qutebrowser
 set -gx EDITOR nvim
