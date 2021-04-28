@@ -21,19 +21,17 @@ if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDI
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -x LESSHISTFILE "-"
 set -x PATH "$PATH:$HOME/.local/bin"
-set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_DESKTOP_DIR "$HOME"
 set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
-set -x XINITRC "$XDG_CONFIG_HOME/X11/xinitrc"
 
 # Command aliases
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
 alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
-alias mpv-hdmi='xrandr --output HDMI1 --mode 1366x768 ; mpv --fs --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
+alias mpv-hdmi='mpv --fs --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && xset dpms force off'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 
@@ -86,5 +84,5 @@ set -x fish_pager_color_description B3A06D\x1eyellow
 set -x fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -x fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 
-# Start X at login
-if status is-login; if test -z "$DISPLAY" -a "$XDG_VTNR" = 1; exec startx "$XINITRC" -- -keeptty &> /dev/null; end; end
+# Start sway at login
+if status is-login; if test -z "$DISPLAY" -a "$XDG_VTNR" = 1; exec sway &> /dev/null; end; end

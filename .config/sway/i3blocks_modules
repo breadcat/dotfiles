@@ -1,0 +1,61 @@
+#!/bin/sh
+
+
+check_online() {
+	true
+	}
+
+strip_chars() {
+	tr -d \[\]\(\)%
+	}
+
+case "$1" in
+	title)
+		true
+		;;
+	backlight)
+		printf " %s\n" "$(brightnessctl i | awk '/Current/ {print $4}' | strip_chars)"
+		;;
+	battery)
+		status="$(awk -F= '/POWER_SUPPLY_STATUS/ {print $2}' /sys/class/power_supply/BAT0/uevent)"
+		level="$(awk -F= '/POWER_SUPPLY_CAPACITY=/ {print $2}' /sys/class/power_supply/BAT0/uevent)"
+		if [ "$status" = "Discharging" ]; then icon=""; else icon=""; fi
+		printf "%s %s\n" "$icon" "$level"
+		;;
+	date)
+		date=$(date '+%A %eXX %B, %H:%M' | sed -e 's/11XX/11th/' -e 's/12XX/12th/' -e 's/13XX/13th/' -e 's/1XX/1st/' -e 's/2XX/2nd/' -e 's/3XX/3rd/' -e 's/XX/th/')
+		printf " %s\n" "$date"
+		;;
+	disk)
+		printf " %s\n" "$(df / | awk '/dev/ {print $5}' | strip_chars)"
+		;;
+	mail)
+		check_online
+		printf " %s\n" "true"
+		;;
+	power)
+		printf "\n"
+		;;
+	rss)
+		check_online
+		printf " %s\n" "$(curl -Ss "https://rss.$DOMAIN/public.php?op=getUnread&login=admin")"
+		;;
+	volume)
+		if [ -z "$(amixer get Master | awk '/off/')" ]; then state=nomute; else state=mute; fi
+		volume=$(amixer get Master | awk '/%/ {print $4}' | strip_chars)
+		if [ "$volume" -gt 66 ]
+		then
+			icon=""
+		elif [ "$volume" -gt 33 ]
+		then
+			icon=""
+		else
+			icon=""
+		fi
+		if [ "$state" = "mute" ]; then icon=""; fi
+		printf "%s %s\n" "$icon" "$volume"
+		;;
+	wifi)
+		printf ""
+		;;
+esac
