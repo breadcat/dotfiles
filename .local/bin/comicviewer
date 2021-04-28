@@ -2,7 +2,7 @@
 
 shopt -s expand_aliases
 alias _curl='curl -L --silent -A \"Mozilla\"'
-alias _play='mpv --fullscreen'
+alias _play='mpv --fullscreen --volume=100'
 alias _view='imv -f -'
 function grab() { _curl "$1" | tr "\"" "\n" ; }
 
