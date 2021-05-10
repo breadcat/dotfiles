@@ -9,7 +9,7 @@ function __fish_command_not_found_handler --on-event fish_command_not_found; ech
 set -gx BROWSER qutebrowser
 set -gx EDITOR nvim
 set -gx READER mupdf
-set -gx TERMINAL termite
+set -gx TERMINAL alacritty
 set -gx VISUAL $EDITOR
 
 # Personal variables
@@ -35,7 +35,8 @@ alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | 
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
 alias mpv-hdmi='mpv --fs --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
-alias screenoff='sleep 0.5s && xset dpms force off'
+alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
+alias todo='$EDITOR (find "$SYNCDIR" -maxdepth 5 -type f -name 'todo.txt')'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 
 # Functions
@@ -44,7 +45,7 @@ function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
-function sessionexec; grep -i "$argv[1]" "$XDG_DATA_HOME/qutebrowser/sessions/*.yml" | awk '/url/ {print $2}' | xargs "$argv[2]"; end
+function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]:00" -to "$argv[3]:00" -c copy split-$argv[1]; end
 
 # Rclone config symlink
