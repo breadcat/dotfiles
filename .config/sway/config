@@ -25,7 +25,7 @@ default_border pixel 1
 default_floating_border pixel 1
 hide_edge_borders both
 smart_gaps on
-gaps inner 4
+gaps inner 6
 gaps outer 0
 seat seat0 hide_cursor 5000
 xwayland disable
@@ -85,8 +85,8 @@ input * {
     for_window [app_id="force_float"] floating enable
     # bindsym $mod+r exec $TERMINAL "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
     # Hardware keys
-    bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set -3% ; pkill -SIGRTMIN+11 i3blocks"
-    bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +3% ; pkill -SIGRTMIN+11 i3blocks"
+    bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set -2% ; pkill -SIGRTMIN+11 i3blocks"
+    bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +2% ; pkill -SIGRTMIN+11 i3blocks"
     bindsym XF86AudioMicMute exec --no-startup-id "amixer set Capture toggle ; pkill -SIGRTMIN+10 i3blocks"
     bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 3%+ unmute ; pkill -SIGRTMIN+10 i3blocks"
     bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 3%- ; pkill -SIGRTMIN+10 i3blocks"
@@ -220,7 +220,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym Mod1+r mode "resize"
 
 #
 # Status Bar:
