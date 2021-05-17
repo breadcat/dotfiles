@@ -1,3 +1,0 @@
-#!/bin/sh
-
-compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec

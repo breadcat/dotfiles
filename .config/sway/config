@@ -81,9 +81,9 @@ input * {
     # bindsym $mod+e exec "$TERMINAL" -e lf
     bindsym $mod+t exec "$TERMINAL"
     bindsym $mod+Shift+w exec "$BROWSER --target private-window"
-    bindsym $mod+d exec "$TERMINAL" --class "force_float" -e "launcher"
-    for_window [app_id="force_float"] floating enable
-    # bindsym $mod+r exec $TERMINAL "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
+    bindsym $mod+d exec alacritty --class 'launcher' --command bash -c 'compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec'
+    for_window [app_id="^launcher$"] floating enable
+
     # Hardware keys
     bindsym XF86MonBrightnessDown exec --no-startup-id "brightnessctl set -2% ; pkill -SIGRTMIN+11 i3blocks"
     bindsym XF86MonBrightnessUp exec --no-startup-id "brightnessctl set +2% ; pkill -SIGRTMIN+11 i3blocks"
@@ -101,6 +101,8 @@ input * {
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
+    # bindsym $mod+r exec termite --name=launcher -e "bash -c 'compgen -c | grep -v fzf | sort -u | fzf --layout=reverse | xargs -r swaymsg -t command exec'"
+    # for_window [app_id="^launcher$"] floating enable, border none, opacity 0.8
     # mouse button for dragging.
     floating_modifier Mod1 normal
 
