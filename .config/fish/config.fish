@@ -15,19 +15,20 @@ set -gx VISUAL $EDITOR
 # Personal variables
 set -gx DOMAIN minskio.co.uk
 set -gx EMAIL (whoami)@$DOMAIN
+set -gx MAILSERVER imap.yandex.com
 set -gx SYNCDIR $HOME/vault
 
 # Bitwarden session variable
 if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDIR/docs/secure/bitwarden.env"); end
 
 # Exports to move certain files around
-set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
-set -x LESSHISTFILE "-"
-set -x PATH "$PATH:$HOME/.local/bin"
-set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x XDG_DATA_HOME "$HOME/.local/share"
-set -x XDG_DESKTOP_DIR "$HOME"
-set -x XDG_DOWNLOAD_DIR "$HOME/downloads"
+set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
+set -gx LESSHISTFILE "-"
+set -gx PATH "$PATH:$HOME/.local/bin"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_DESKTOP_DIR "$HOME"
+set -gx XDG_DOWNLOAD_DIR "$HOME/downloads"
 
 # Command aliases
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
