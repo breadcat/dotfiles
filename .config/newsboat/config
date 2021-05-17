@@ -21,4 +21,4 @@ macro m set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set brows
 urls-source "ttrss"
 ttrss-url "https://rss.minskio.co.uk/"
 ttrss-login "admin"
-ttrss-passwordfile "~/vault/docs/secure/ttrss.pass"
+ttrss-passwordfile "~/vault/docs/secure/ttrss_login"
