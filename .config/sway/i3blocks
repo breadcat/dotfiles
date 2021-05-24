@@ -29,6 +29,9 @@ interval=15
 [rss]
 interval=1800
 
+[mail]
+interval=1800
+
 #  [documentation]
 # full_text=Documentation
 # website=https://vivien.github.io/i3blocks
@@ -46,3 +49,7 @@ interval=1800
 
 [date]
 interval=10
+
+[power]
+color=#ff0000
+interval=once

@@ -2,7 +2,11 @@
 
 
 check_online() {
-	true
+	status=$(curl --silent "http://detectportal.firefox.com/success.txt")
+	if [ ! "$status" = "success" ]
+	then
+		printf "No Internet Connection, sleeping" && sleep 30
+	fi
 	}
 
 strip_chars() {
@@ -31,7 +35,7 @@ case "$1" in
 		;;
 	mail)
 		check_online
-		printf " %s\n" "true"
+		printf " %s\n" "$(curl --silent --netrc-file "$SYNCDIR/docs/secure/mail_server" imaps://"$MAILSERVER" -X 'STATUS INBOX (UNSEEN)'  | awk -F"[][()]" '{print substr ($2, 8 )}')"
 		;;
 	power)
 		printf "\n"
@@ -56,6 +60,6 @@ case "$1" in
 		printf "%s %s\n" "$icon" "$volume"
 		;;
 	wifi)
-		printf ""
+		printf "\n"
 		;;
 esac
