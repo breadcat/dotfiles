@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# functions
+function _available_options {
+	printf "Retroarch Launcher, cores available:\n"
+	sed -n '/^case/,/^esac$/p' "$0" | grep ')' | grep -v '*)' | cut -f1 -d\) | sort | xargs
+	exit 1
+	}
+
+function _launch {
+	core_selection="$1"
+	rom_selection="$3"
+	# core_directory="$(awk -F\" '/libretro_directory/ {print $2}' "$XDG_CONFIG_HOME/retroarch/retroarch.cfg" | sed "s/\~/\$HOME/g")"
+	arguments=(-L "$HOME/.config/retroarch/cores/$core_selection"_libretro.so "$rom_selection" --verbose)
+	printf "Launching %s with %s\n" "$(basename "$rom_selection")" "$core_selection"
+	retroarch "${arguments[@]}"
+	}
+
+# case loop
+case "$1" in
+	2600) _launch stella "$@" ;;
+	3ds) _launch citra "$@" ;;
+	ast) _launch hatari "$@" ;;
+	dos) _launch dosbox_pure "$@" ;;
+	gb) _launch sameboy "$@" ;;
+	gba) _launch mgba "$@" ;;
+	gbc) _launch sameboy "$@" ;;
+	gcn) _launch dolphin "$@" ;;
+	mame) _launch mame "$@" ;;
+	n64) _launch mupen64plus_next "$@" ;;
+	nds) _launch melonds "$@" ;;
+	nes) _launch mesen "$@" ;;
+	nvb) _launch mednafen_vb "$@" ;;
+	pce) _launch mednafen_pce "$@" ;;
+	ps1) _launch swanstation "$@" ;;
+	ps2) _launch pcsx2 "$@" ;;
+	psp) _launch ppsspp "$@" ;;
+	sat) _launch mednafen_saturn "$@" ;;
+	sdc) _launch flycast "$@" ;;
+	sfc) _launch snes9x "$@" ;;
+	smd) _launch genesis_plus_gx "$@" ;;
+	wii) _launch dolphin "$@" ;;
+	*) _available_options &
+esac
