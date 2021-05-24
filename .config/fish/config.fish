@@ -47,7 +47,7 @@ function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; comman
 function vat; math "$argv + ($argv * 0.2)"; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
-function split; ffmpeg -i "$argv[1]" -ss "$argv[2]:00" -to "$argv[3]:00" -c copy split-$argv[1]; end
+function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 
 # Rclone config symlink
 if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/dockerfiles/rclone.conf"; ln -s "$SYNCDIR/src/dockerfiles" "$XDG_CONFIG_HOME/rclone"; end
