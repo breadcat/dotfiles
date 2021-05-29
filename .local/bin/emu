@@ -32,7 +32,7 @@ case "$1" in
 	nes) _launch mesen "$@" ;;
 	nvb) _launch mednafen_vb "$@" ;;
 	pce) _launch mednafen_pce "$@" ;;
-	ps1) _launch swanstation "$@" ;;
+	ps1) _launch duckstation "$@" ;;
 	ps2) _launch pcsx2 "$@" ;;
 	psp) _launch ppsspp "$@" ;;
 	sat) _launch mednafen_saturn "$@" ;;
