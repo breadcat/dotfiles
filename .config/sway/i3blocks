@@ -26,6 +26,9 @@ signal=11
 [disk]
 interval=15
 
+[crypto]
+interval=1800
+
 [rss]
 interval=1800
 
