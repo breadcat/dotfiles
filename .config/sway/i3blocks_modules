@@ -5,7 +5,8 @@ check_online() {
 	status=$(curl --silent "http://detectportal.firefox.com/success.txt")
 	if [ ! "$status" = "success" ]
 	then
-		printf "No Internet Connection, sleeping" && sleep 30
+		printf "Disconnected"
+		exit 1
 	fi
 	}
 
@@ -19,8 +20,8 @@ case "$1" in
 		;;
 	crypto)
 		check_online
-		function change() { printf "%0.1f" "$(curl --silent --request GET --url "https://api.coincap.io/v2/assets/$1" | jq -r '.data.changePercent24Hr')" ; }
-		printf " %s %s\n" "$(change monero)" "$(change nano)"
+		change() { printf "%0.1f" "$(curl --silent --request GET --url "https://api.coincap.io/v2/assets/$1" | jq -r '.data.changePercent24Hr')" ; }
+		printf " %s, %s\n" "$(change monero)" "$(change nano)"
 		;;
 	backlight)
 		printf " %s\n" "$(brightnessctl i | awk '/Current/ {print $4}' | strip_chars)"
