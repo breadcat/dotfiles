@@ -90,4 +90,4 @@ set -x fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -x fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
 
 # Start sway at login
-if status is-login; if test -z "$DISPLAY" -a "$XDG_VTNR" = 1; exec sway &> /dev/null; end; end
+if test (tty) = "/dev/tty1"; exec sway; end
