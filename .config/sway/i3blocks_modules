@@ -50,6 +50,10 @@ case "$1" in
 		check_online
 		printf " %s\n" "$(curl -Ss "https://rss.$DOMAIN/public.php?op=getUnread&login=admin")"
 		;;
+	temperature)
+		temperature="$(($(cat /sys/class/thermal/thermal_zone0/temp)/1000))"
+		printf " %s\n" "$temperature"
+		;;
 	volume)
 		if [ -z "$(amixer get Master | awk '/off/')" ]; then state=nomute; else state=mute; fi
 		volume=$(amixer get Master | awk '/%/ {print $4}' | strip_chars)

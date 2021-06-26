@@ -23,6 +23,9 @@ signal=10
 interval=once
 signal=11
 
+[temperature]
+interval=10
+
 [disk]
 interval=15
 
