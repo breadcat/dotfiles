@@ -652,7 +652,7 @@ c.colors.webpage.darkmode.enabled = False
 
 ## Automatically start playing `<video>` elements.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 ## List of URLs to ABP-style adblocking rulesets.  Only used when Brave's
 ## ABP-style adblocker is used (see `content.blocking.method`).  You can
@@ -738,7 +738,7 @@ c.content.blocking.method = 'both'
 ## Allow websites to read canvas elements. Note this is needed for some
 ## websites to work properly.
 ## Type: Bool
-# c.content.canvas_reading = True
+c.content.canvas_reading = False
 
 ## Which cookies to accept. With QtWebEngine, this setting also controls
 ## other features with tracking capabilities similar to those of cookies;
@@ -1030,7 +1030,7 @@ c.content.notifications.enabled = False
 
 ## Enable WebGL.
 ## Type: Bool
-# c.content.webgl = True
+c.content.webgl = False
 
 ## Which interfaces to expose via WebRTC.
 ## Type: String
@@ -1631,6 +1631,7 @@ c.downloads.remove_finished = 10000
 ##   - uk-UA: Ukrainian (Ukraine)
 ##   - vi-VN: Vietnamese (Viet Nam)
 c.spellcheck.languages = ["en-GB"]
+# /usr/share/qutebrowser/scripts/dictcli.py install en-GB
 
 ## Padding (in pixels) for the statusbar.
 ## Type: Padding
@@ -1958,6 +1959,7 @@ c.url.searchengines = {
         'iu': 'https://www.google.co.uk/searchbyimage?site=search&image_url={}',
         'jack': 'https://jack.minskio.co.uk/UI/Dashboard#search={}',
         'last': 'https://www.last.fm/search?q={}',
+        'lib': 'https://libgen.fun/foreignfiction/index.php?s=+{}',
         'lut': 'https://lutris.net/games?q={}',
         'm': 'https://wego.here.com/search/{}',
         'mac': 'https://api.macvendors.com/{}',
@@ -2064,6 +2066,9 @@ c.url.start_pages = ['https://start.duckduckgo.com']
 # config.bind(';t', 'hint inputs')
 config.bind('t', 'config-cycle tabs.show always switching ;; config-cycle statusbar.show always in-mode')
 config.bind(',m', 'spawn mpv {url}')
+config.bind('<Ctrl+=>', 'zoom-in')
+config.bind('<Ctrl+->', 'zoom-out')
+config.bind('<Ctrl+0>', 'zoom')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
