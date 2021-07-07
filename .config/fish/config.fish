@@ -24,7 +24,6 @@ if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDI
 # Exports to move certain files around
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx LESSHISTFILE "-"
-set -gx PATH "$PATH:$HOME/.local/bin"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_DESKTOP_DIR "$HOME"
