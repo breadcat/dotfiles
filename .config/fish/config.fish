@@ -22,6 +22,7 @@ set -gx SYNCDIR $HOME/vault
 if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDIR/docs/secure/bitwarden.env"); end
 
 # Exports to move certain files around
+fish_add_path "$HOME/.local/bin"
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx LESSHISTFILE "-"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
