@@ -1,8 +1,7 @@
 #!/bin/bash
 
 station="$1"
-shopt -s expand_aliases
-alias _play='mpv'
+function _play() { mpv "$@"; }
 
 if [[ $station =~ youtube ]]; then _play "$1"
 elif [[ $station =~ 00s ]]; then _play "https://ais.absoluteradio.co.uk/absolute00shigh.aac"

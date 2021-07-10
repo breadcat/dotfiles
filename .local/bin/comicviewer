@@ -1,9 +1,8 @@
 #!/bin/bash
 
-shopt -s expand_aliases
-alias _curl='curl -L --silent -A \"Mozilla\"'
-alias _play='mpv --fullscreen --volume=100'
-alias _view='imv -f -'
+function _curl() { curl -L --silent -A \"Mozilla\" "$@" ; }
+function _play() { mpv --fullscreen --volume=100 "$@" ; }
+function _view() { imv -f - ; }
 function grab() { _curl "$1" | tr "\"" "\n" ; }
 
 if [[ $1 =~ youtube.com ]]; then _play "$@"
