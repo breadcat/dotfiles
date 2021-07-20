@@ -41,7 +41,7 @@ alias todo='$EDITOR (find "$SYNCDIR" -maxdepth 5 -type f -name 'todo.txt')'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
-function fractodec; echo "scale=2; $argv" | bc; end
+function fractodec; math -s2 "$argv" ; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
