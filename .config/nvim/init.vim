@@ -1,5 +1,6 @@
 
 " Set options
+set smartcase
 set nocompatible
 let mapleader =","
 set backspace=indent,eol,start
@@ -9,7 +10,6 @@ set linebreak
 set mouse=a
 set nohlsearch
 set number
-set smartcase
 set title
 set titlestring=%f\ %m
 set whichwrap+=<,>,h,l,[,]
