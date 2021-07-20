@@ -1,3 +1,6 @@
+Host *
+	UserKnownHostsFile ~/.config/ssh/known_hosts
+
 Host minskio
 	User peter
 	Port 55012
