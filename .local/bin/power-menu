@@ -1,0 +1,27 @@
+#!/bin/bash
+
+selection=$(cat <<EOF | fzf --no-sort
+Exit
+Logout
+Screenoff
+Halt
+Suspend
+Hibernate
+Reboot-EFI
+Reboot
+Shutdown
+EOF
+);
+
+case "$selection" in
+	Shutdown) systemctl poweroff ;;
+	Reboot) systemctl reboot ;;
+	Reboot-EFI) systemctl reboot --firmware-setup ;;
+	Hibernate) systemctl hibernate ;;
+	Suspend) systemctl suspend ;;
+	Halt) systemctl halt ;;
+	Screenoff) sleep 0.5s && pkill -USR1 swayidle ;;
+	Logout) pkill -KILL -u "$(whoami)" ;;
+	Exit) swaymsg exit ;;
+	*) exit 1
+esac
