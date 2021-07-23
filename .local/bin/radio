@@ -1,7 +1,7 @@
 #!/bin/bash
 
 station="$1"
-function _play() { mpv "$@"; }
+function _play() { mpv --no-video "$@"; }
 
 if [[ $station =~ youtube ]]; then _play "$1"
 elif [[ $station =~ 00s ]]; then _play "https://ais.absoluteradio.co.uk/absolute00shigh.aac"
@@ -14,6 +14,8 @@ elif [[ $station =~ 90s ]]; then _play "https://ais.absoluteradio.co.uk/absolute
 elif [[ $station =~ absolute ]]; then _play "https://ais.absoluteradio.co.uk/absoluteradiohigh.aac"
 elif [[ $station =~ bandit ]]; then _play "https://p11.p4groupaudio.com/P11_MM"
 elif [[ $station =~ classic ]]; then _play "https://ais.absoluteradio.co.uk/absoluteclassicrockhigh.aac"
+elif [[ $station =~ lofi ]]; then _play "https://www.youtube.com/watch?v=5qap5aO4i9A"
+elif [[ $station =~ p6 ]]; then _play "https://p6.p4groupaudio.com/P06_MM"
 elif [[ $station =~ planet ]]; then _play "https://stream-mz.planetradio.co.uk/planetrock.aac"
 elif [[ $station =~ sam ]]; then _play "https://stream-mz.planetradio.co.uk/net1bristol.aac"
 elif [[ $station =~ x ]]; then _play "https://media-ssl.musicradio.com/RadioXUK"
