@@ -663,12 +663,31 @@ c.content.autoplay = False
 ## extracting it from the `location` parameter of the subscribe URL and
 ## URL-decoding it).
 ## Type: List of Url
-c.content.blocking.adblock.lists = [
+c.content.blocking.adblock.lists = [ # https://filterlists.com/
+    'https://curben.gitlab.io/malware-filter/urlhaus-filter-online.txt',
+    'https://easylist-downloads.adblockplus.org/abp-filters-anti-cv.txt',
     'https://easylist.to/easylist/easylist.txt',
     'https://easylist.to/easylist/easyprivacy.txt',
+    'https://easylist.to/easylist/fanboy-annoyance.txt',
     'https://easylist.to/easylist/fanboy-social.txt',
+    'https://fanboy.co.nz/fanboy-antifacebook.txt',
+    'https://fanboy.co.nz/fanboy-cookiemonster.txt',
+    'https://fanboy.co.nz/fanboy-problematic-sites.txt',
+    'https://filters.adtidy.org/extension/ublock/filters/14.txt',
+    'https://filters.adtidy.org/extension/ublock/filters/4.txt',
+    'https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt',
+    'https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoMirror/NanoDefender.txt',
+    'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblock',
     'https://pub.minskio.co.uk/adblock.txt',
+    'https://raw.githubusercontent.com/bogachenko/fuckfuckadblock/master/fuckfuckadblock.txt',
+    'https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt',
+    'https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt',
+    'https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt',
+    'https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt',
+    'https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt',
+    'https://raw.githubusercontent.com/yourduskquibbles/webannoyances/master/ultralist.txt',
     'https://secure.fanboy.co.nz/fanboy-annoyance.txt',
+    'https://secure.fanboy.co.nz/fanboy-annoyance_ubo.txt',
     'https://secure.fanboy.co.nz/fanboy-cookiemonster.txt',
     'https://www.i-dont-care-about-cookies.eu/abp/'
     ]
