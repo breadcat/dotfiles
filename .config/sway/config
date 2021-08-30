@@ -16,9 +16,6 @@ set $right l
 
 font pango:icomoon-feather, Icons 10
 
-# Autostart applications
-exec pidof syncthing || syncthing
-
 # Basic options
 smart_borders on
 default_border pixel 1
