@@ -32,6 +32,17 @@ xwayland disable
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg #5e686d solid_color
 
+# Colour scheme - Base16 Default Dark by Chris Kempson (http://chriskempson.com)
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          #d8d8d8 #7cafc2 #181818 #7cafc2 #7cafc2
+client.focused_inactive #282828 #282828 #d8d8d8 #585858 #282828
+client.unfocused        #282828 #181818 #d8d8d8 #282828 #282828
+client.urgent           #ab4642 #ab4642 #181818 #ab4642 #ab4642
+client.placeholder      #181818 #181818 #d8d8d8 #181818 #181818
+client.background       #f8f8f8
+
+
+
 #
 # Example configuration:
 #
@@ -231,6 +242,18 @@ bar {
     # The default just shows the current date and time.
     status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks
 
+    # Bar colour scheme
+    colors {
+        background #181818
+        separator  #282828
+        statusline #b8b8b8
+        # State             Border  BG      Text
+        focused_workspace   #d8d8d8 #7cafc2 #181818
+        active_workspace    #d8d8d8 #585858 #181818
+        inactive_workspace  #585858 #282828 #d8d8d8
+        urgent_workspace    #ab4642 #ab4642 #181818
+        binding_mode        #181818 #f7ca88 #181818
+    }
 }
 
 include /etc/sway/config.d/*
