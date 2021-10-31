@@ -1,6 +1,18 @@
 #!/bin/sh
 
+_cec_screen_on() { echo "on 0" | cec-client -s ; }
+_kodi_kill() { kodi-send --action=Quit ; }
 # Workaround for client side controls in Kodi issue
 # https://github.com/xbmc/xbmc/issues/19491#issuecomment-821128415
+_kodi_toggle() { swaymsg '[app_id=Kodi]' fullscreen toggle ; }
+_kodi_launch() { kodi & sleep 1s ; _kodi_toggle ; sleep 1s ; _kodi_toggle ; }
+_kodi_backup() { tar -cf - "$HOME/.kodi/" -P | pv -s $(du -sb "$HOME/.kodi" | awk '{print $1}') | gzip > kodi-backup-$(date +%F-%H%M).tar.gz ; }
+_launch() { _kodi_kill ; _cec_screen_on ; "$@" ; }
 
-{ kodi & sleep 1s; swaymsg '[app_id="Kodi"]' fullscreen toggle; sleep 1s ; swaymsg '[app_id="Kodi"]' fullscreen toggle; fg; }
+if [ "$1" = terminal ]; then _launch "$TERM"
+elif [ "$1" = backup ]; then _kodi_backup
+elif [ "$1" = kodi ]; then _kodi_launch
+elif [ "$1" = moonlight ]; then _launch moonlight
+elif [ "$1" = newsboat ]; then _launch "$TERM" newsboat
+elif [ "$1" = retroarch ]; then _launch retroarch
+else printf "Options available:\n%s" "$(awk '/^elif/ {print $5}' "$0" | sort | tr "\n" " ")" && _kodi_launch ; fi
