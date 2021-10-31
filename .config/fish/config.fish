@@ -42,14 +42,16 @@ alias todo='$EDITOR (find "$SYNCDIR" -maxdepth 5 -type f -name 'todo.txt')'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
-function hextodec; math "0x$argv" ; end
+function cheat; curl -s "http://cheat.sh/$argv"; end
 function fractodec; math -s2 "$argv" ; end
+function hextodec; math "0x$argv" ; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
+function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
+function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
+function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
-function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
-function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 
 # Rclone config symlink
 if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/dockerfiles/rclone.conf"; ln -s "$SYNCDIR/src/dockerfiles" "$XDG_CONFIG_HOME/rclone"; end
