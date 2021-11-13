@@ -1,12 +1,17 @@
 #!/bin/bash
 
 # variables
-database=watchedlist.db
+if [ -z "$1" ]
+then
+	database="watchedlist.db"
+else
+	database="$1"
+fi
 
 # checks
-if [ ! -f $database ]
+if [ ! -f "$database" ]
 then
-	echo Database $database file missing, exiting
+	echo Database "$database" file missing, exiting
 	exit 0
 fi
 
