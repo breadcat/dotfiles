@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Jailbroken Kindle manager. Updates KoReader install, syncs stored epubs
+# Requires curl, jq, rclone and unzip
+
+# variables
+kindle_path="$(find /mnt/ -type d -name 'kindle' | head -1)"
+destination_directory="$kindle_path/_books"
+
+# functions
+function library_sync {
+	printf "Sycing remote library to Kindle... "
+	remote_library="drive-media:literature/books"
+	rclone sync "$remote_library" "$destination_directory"
+	# logging? status?
+	printf "done\n"
+	}
+function reader_update {
+	printf "Downloading latest KoReader... "
+	koreader_upstream="https://api.github.com/repos/koreader/koreader/releases/latest"
+	koreader_architecture="kindlepw2"
+	koreader_latest="$(curl -s "$koreader_upstream" | jq -r '.assets[].browser_download_url' | grep "$koreader_architecture")"
+	working_directory="$(mktemp -d)"
+	cd "$working_directory"
+	wget -q "$koreader_latest"
+	printf "done\n"
+	printf "Removing old application... "
+	rm -f "$kindle_path/extension" "$kindle_path/koreader"
+	printf "done\n"
+	printf "Upgrading application... "
+	for i in *.zip; do unzip -qfo "$i" -d "$kindle_path"; done
+	printf "done\n"
+	printf "Cleaning up temporary paths... "
+	rm -r "$directory_temp"
+	printf "done\n"
+	}
+
+case "$1" in
+	sync) library_sync ;;
+	update) reader_update ;;
+	both) library_sync && reader_update ;;
+	*) exit 1 ;;
+esac
