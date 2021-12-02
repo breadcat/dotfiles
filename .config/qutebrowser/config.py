@@ -19,6 +19,18 @@ c.statusbar.show = 'in-mode'
 c.tabs.last_close = 'close'
 c.tabs.show = 'switching'
 
+## Font config
+c.fonts.hints = '9pt JetBrainsMono'
+c.fonts.keyhint = '9pt JetBrainsMono'
+c.fonts.prompts = '9pt JetBrainsMono'
+c.fonts.downloads = '9pt JetBrainsMono'
+c.fonts.statusbar = '9pt JetBrainsMono'
+c.fonts.contextmenu = '9pt JetBrainsMono'
+c.fonts.messages.info = '9pt JetBrainsMono'
+c.fonts.debug_console = '9pt JetBrainsMono'
+c.fonts.completion.entry = '9pt JetBrainsMono'
+c.fonts.completion.category = '9pt JetBrainsMono'
+
 ## Home page
 c.url.start_pages = ['qute://bookmarks/']
 c.url.default_page = 'qute://bookmarks/'

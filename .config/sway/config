@@ -14,7 +14,6 @@ set $down j
 set $up k
 set $right l
 
-font pango:icomoon-feather, Icons 10
 
 # Basic options
 smart_borders on
@@ -238,8 +237,7 @@ bindsym Mod1+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
+    font JetBrainsMono 9
     status_command i3blocks -c $XDG_CONFIG_HOME/sway/i3blocks
 
     # Bar colour scheme
