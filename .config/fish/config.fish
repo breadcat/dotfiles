@@ -18,9 +18,6 @@ set -gx EMAIL (whoami)@$DOMAIN
 set -gx MAILSERVER imap.yandex.com
 set -gx SYNCDIR $HOME/vault
 
-# Bitwarden session variable
-if test -f "$SYNCDIR/docs/secure/bitwarden.env"; set -x BW_SESSION (cat "$SYNCDIR/docs/secure/bitwarden.env"); end
-
 # Exports to move certain files around
 fish_add_path "$HOME/.local/bin"
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
