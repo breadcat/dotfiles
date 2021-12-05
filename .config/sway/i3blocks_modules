@@ -41,7 +41,9 @@ case "$1" in
 		;;
 	mail)
 		check_online
-		printf " %s\n" "$(curl --silent --netrc-file "$SYNCDIR/docs/secure/mail_server" imaps://"$MAILSERVER" -X 'STATUS INBOX (UNSEEN)'  | awk -F"[][()]" '{print substr ($2, 8 )}')"
+		mail_password=$(rbw get 'yandex mail')
+		mail_count=$(curl --silent --netrc-file <(cat <<<"machine $MAILSERVER login $EMAIL password $mail_password") "imaps://$MAILSERVER" -X 'STATUS INBOX (UNSEEN)')
+		printf " %s\n" "$(printf "$mail_count"  | awk -F"[][()]" '{print substr ($2, 8 )}')"
 		;;
 	power)
 		printf "\n"
