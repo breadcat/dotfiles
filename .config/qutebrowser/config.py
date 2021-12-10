@@ -12,6 +12,7 @@ c.content.canvas_reading = False
 c.content.geolocation = False
 c.content.javascript.can_access_clipboard = True
 c.content.notifications.enabled = False
+c.content.tls.certificate_errors = 'ask-block-thirdparty'
 c.content.webgl = False
 c.downloads.location.directory = '~/'
 c.downloads.remove_finished = 10000
