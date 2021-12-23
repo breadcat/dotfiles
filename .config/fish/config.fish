@@ -42,6 +42,7 @@ alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --
 function cheat; curl -s "http://cheat.sh/$argv"; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
+function mcd; mkdir -p "$argv" && cd "$argv" ; end
 function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv); end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
 function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
