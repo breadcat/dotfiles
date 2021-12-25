@@ -15,7 +15,6 @@ set -gx VISUAL $EDITOR
 # Personal variables
 set -gx DOMAIN minskio.co.uk
 set -gx EMAIL (whoami)@$DOMAIN
-set -gx MAILSERVER imap.yandex.com
 set -gx SYNCDIR $HOME/vault
 
 # Exports to move certain files around
