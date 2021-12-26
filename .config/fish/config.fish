@@ -25,6 +25,7 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_DESKTOP_DIR "$HOME"
 set -gx XDG_DOWNLOAD_DIR "$HOME/downloads"
+alias scp='scp -F "$XDG_CONFIG_HOME/ssh/config"'
 alias ssh='ssh -F "$XDG_CONFIG_HOME/ssh/config"'
 
 # Command aliases
