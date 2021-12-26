@@ -39,6 +39,7 @@ alias todo='$EDITOR (find "$SYNCDIR" -maxdepth 5 -type f -name 'todo.txt')'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
+function backupdir; tar -cf - "$argv" -P | pv -s (du -sb "$argv" | awk '{print $1}') | gzip > "$argv"_backup-(date +%F-%H%M).tar.gz ; end
 function cheat; curl -s "http://cheat.sh/$argv"; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
