@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# variables
+server=$(echo "$DOMAIN" | cut -f1 -d.)
+reader=admin
+container=ttrss
+remote_dest=$HOME/export.opml
+local_dest=$XDG_CONFIG_HOME/newsboat/export.opml
+dots_dir="$SYNCDIR/src/dotfiles"
+
+printf "Exporting config file... "
+if [ -d "$XDG_CONFIG_HOME/ssh" ]
+then
+
+	ssh() { command ssh -F "$XDG_CONFIG_HOME/ssh/config" "$@" ; }
+	scp() { command scp -F "$XDG_CONFIG_HOME/ssh/config" "$@" ; }
+fi
+
+ssh "$server" "docker exec $container s6-setuidgid www-data php /var/www/ttrss/update.php --opml-export \"$reader /home/www-data/export.opml\""
+ssh "$server" "docker cp $container:/home/www-data/export.opml $remote_dest"
+scp "$server":"$remote_dest" "$local_dest"
+ssh "$server" "rm $remote_dest"
+printf "done"
+
+if [ -d "$dots_dir" ]
+then
+	printf "Committing to git... "
+	git --git-dir="$dots_dir" --work-tree="$HOME" add "$local_dest"
+	git --git-dir="$dots_dir" --work-tree="$HOME" commit -m "RSS export update $(date -I)"
+	printf "done"
+fi
