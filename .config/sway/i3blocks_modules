@@ -40,11 +40,10 @@ case "$1" in
 		printf " %s\n" "$(df / | awk '/dev/ {print $5}' | strip_chars)"
 		;;
 	mail)
-		check_online
-		mail_server=$(rbw get 'email' --full | awk -F: '/Incoming/ {gsub(/ /,""); print $2}')
-		mail_password=$(rbw get 'email')
-		mail_count=$(curl --silent --netrc-file <(cat <<<"machine $mail_server login $EMAIL password $mail_password") "imaps://$MAILSERVER" -X 'STATUS INBOX (UNSEEN)')
-		printf " %s\n" "$(printf "$mail_count"  | awk -F"[][()]" '{print substr ($2, 8 )}')"
+		mail_server=$(rbw get email --full | awk -F: '/Incoming/ {gsub(/ /,""); print $2}')
+		mail_password=$(rbw get email)
+		mail_count=$(curl --silent --netrc-file <(cat <<<"machine $mail_server login $EMAIL password $mail_password") imaps://$mail_server -X 'STATUS INBOX (UNSEEN)' | awk -F'[][()]' '{print substr ($2, 8 )}')
+		printf " %s\n" "$mail_count"
 		;;
 	power)
 		printf "\n"
