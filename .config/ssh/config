@@ -8,6 +8,6 @@ Host minskio
 	Hostname minskio.co.uk
 
 Host htpc
-	User peter
+	User root
 	Port 22
 	Hostname 192.168.1.6
