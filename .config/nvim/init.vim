@@ -30,3 +30,4 @@ autocmd BufWritePost ~/.config/polybar/config !pkill -USR1 polybar
 autocmd BufWritePost ~/.config/sxhkd/sxhkdrc !pkill -USR1 sxhkd
 autocmd BufWritePost ~/.config/termite/config !pkill -USR1 termite
 autocmd BufWritePost ~/.config/sway/config !swaymsg reload
+autocmd BufWritePost ~/.config/sway/i3blocks_modules !swaymsg reload
