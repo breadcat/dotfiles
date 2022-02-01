@@ -11,3 +11,7 @@ Host htpc
 	User root
 	Port 22
 	Hostname 192.168.1.6
+
+Host aur.archlinux.org
+	IdentityFile ~/vault/docs/secure/aur
+	User aur
