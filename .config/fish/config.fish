@@ -39,6 +39,7 @@ alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
 function cheat; curl -s "http://cheat.sh/$argv"; end
+function dos2unix; sed -i 's/\r//' "$argv"; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
 function mcd; mkdir -p "$argv" && cd "$argv" ; end
