@@ -1,11 +1,10 @@
 #!/bin/bash
 
 function _curl() { curl -L --silent -A \"Mozilla\" "$@" ; }
-function _play() { mpv --fullscreen --volume=100 "$@" ; }
 function _view() { imv -f - ; }
 function grab() { _curl "$1" | tr "\"" "\n" ; }
 
-if [[ $1 =~ youtube.com ]]; then _play "$@"
+if [[ $1 =~ youtube.com ]]; then mpv --fullscreen --volume=100 "$@"
 elif [[ $1 =~ arcaderage.co ]]; then _curl "$(grab "$@" | awk -F"?" '/uploads/ {print $1;exit}')" | _view
 elif [[ $1 =~ Buttersafe ]]; then _curl "$(grab "$@" | awk '/comics/')" | _view
 elif [[ $1 =~ commitstrip.com ]]; then _curl "$(grab "$@" | awk '/uploads/ && !/Template/')" | _view
