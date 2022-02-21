@@ -33,7 +33,7 @@ alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
 alias mpv-hdmi='mpv --fs --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
-alias todo='$EDITOR (find "$SYNCDIR" -maxdepth 5 -type f -name 'todo.txt')'
+alias todo='find "$SYNCDIR" -maxdepth 3 -type f -name 'todo.txt' -exec $EDITOR {} \;'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
