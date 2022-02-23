@@ -1,4 +1,6 @@
 
+# vim: filetype=sh
+
 # Disable greeting
 set fish_greeting
 
