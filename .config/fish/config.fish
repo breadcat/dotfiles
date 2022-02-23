@@ -27,6 +27,7 @@ set -gx XDG_DESKTOP_DIR "$HOME"
 set -gx XDG_DOWNLOAD_DIR "$HOME/downloads"
 
 # Command aliases
+if test ! (command -v sudo); alias sudo="doas"; end
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
 alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
