@@ -37,7 +37,7 @@ alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
 alias mpv-hdmi='mpv --fs --volume=100 --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
 alias todo='find "$SYNCDIR" -maxdepth 3 -type f -name 'todo.txt' -exec $EDITOR {} \;'
-alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
+alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.*" | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
