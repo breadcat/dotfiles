@@ -37,7 +37,7 @@ alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
 alias mpv-hdmi='mpv --fs --volume=100 --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
 alias todo='find "$SYNCDIR" -maxdepth 3 -type f -name 'todo.txt' -exec $EDITOR {} \;'
-alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.*" | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
+alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.git" | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
 
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
@@ -48,7 +48,7 @@ function hextodec; math "0x$argv" ; end
 function mcd; mkdir -p "$argv" && cd "$argv" ; end
 function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv); end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
-function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
+function mount-rw; sudo mount -o rw,users,uid=(id -u),guid=(id -g) "$argv[1]" "$argv[2]"; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
