@@ -29,6 +29,6 @@ These configuration files are all managed using a bare git repository, [as outli
 ## Deploying
 
 ```
-git clone https://git.minskio.co.uk/cgit.cgi/dotfiles/ && cd dotfiles
+git clone https://github.com/breadcat/dotfiles.git && cd dotfiles
 shopt -s dotglob && for i in *; do rsync -a "$i" "$HOME" --remove-source-files; done && rm -r .
 ```
