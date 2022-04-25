@@ -33,8 +33,8 @@ c.fonts.completion.entry = '9pt JetBrainsMono'
 c.fonts.completion.category = '9pt JetBrainsMono'
 
 ## Home page
-c.url.start_pages = ['qute://bookmarks/']
-c.url.default_page = 'qute://bookmarks/'
+c.url.start_pages = 'https://breadcat.github.io/startpage/'
+c.url.default_page = 'https://breadcat.github.io/startpage/'
 
 ## Spell checking - /usr/share/qutebrowser/scripts/dictcli.py install en-GB
 c.spellcheck.languages = ["en-GB"]
