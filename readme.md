@@ -7,20 +7,21 @@ These configuration files are all managed using a bare git repository, [as outli
 
 - Audio player: `cmus`
 - AUR helper: `paru`
-- Chat client: `gomuks`
+- Chat client: `profanity`
 - Colour Scheme: [default @ terminal.sexy](http://terminal.sexy/)
-- Document viewer: `mupdf`
+- Document viewer: `zathura`
 - Emulation: `retroarch`
 - File manager: `lf`
 - Image viewer: `imv`
-- Mail reader: `neomutt`
+- Mail reader: `aerc`
 - Password manager: `rbw`
 - RSS reader: `newsboat`
 - Shell: `fish`
 - Terminal emulator: `alacritty`
 - Text editor: `neovim`
-- Torrent client: `rtorrent`
+- Torrent client: `transmission`
 - Video player: `mpv`
+- Wallet: `atto`
 - Wallpaper: `#5e686d`
 - Web browser: `qutebrowser`
 - Window manager: `sway`
