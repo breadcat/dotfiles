@@ -41,14 +41,16 @@ alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.git" | fzf 
 
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
-function cheat; curl -s "http://cheat.sh/$argv"; end
-function dos2unix; sed -i 's/\r//' "$argv"; end
+function cheat; curl -s "http://cheat.sh/$argv" ; end
+function crypto-sum; rbw get 'crypto purchases' | awk '/^20/ {print $2}' | paste -sd+ | math ; end
+function dos2unix; sed -i 's/\r//' "$argv" ; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
 function mcd; mkdir -p "$argv" && cd "$argv" ; end
-function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv); end
+function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv) ; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
-function mount-rw; sudo mount -o rw,users,uid=(id -u),guid=(id -g) "$argv[1]" "$argv[2]"; end
+function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
+# function mount-exfat; sudo mount -o rw,users,uid=(id -u) "$argv[1]" "$argv[2]"; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
