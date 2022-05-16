@@ -14,9 +14,10 @@ elif [[ $station =~ 90s ]]; then _play "https://ais.absoluteradio.co.uk/absolute
 elif [[ $station =~ absolute ]]; then _play "https://ais.absoluteradio.co.uk/absoluteradiohigh.aac"
 elif [[ $station =~ bandit ]]; then _play "https://p11.p4groupaudio.com/P11_MM"
 elif [[ $station =~ classic ]]; then _play "https://ais.absoluteradio.co.uk/absoluteclassicrockhigh.aac"
+elif [[ $station =~ kerrang ]]; then _play "https://stream-al.planetradio.co.uk/kerrang.aac?aw_0_1st.skey=1652735377"
 elif [[ $station =~ lofi ]]; then _play "https://www.youtube.com/watch?v=5qap5aO4i9A"
 elif [[ $station =~ p6 ]]; then _play "https://p6.p4groupaudio.com/P06_MM"
 elif [[ $station =~ planet ]]; then _play "https://stream-mz.planetradio.co.uk/planetrock.aac"
 elif [[ $station =~ sam ]]; then _play "https://stream-mz.planetradio.co.uk/net1bristol.aac"
 elif [[ $station =~ x ]]; then _play "https://media-ssl.musicradio.com/RadioXUK"
-else printf "Stations available:\n%s" "$(awk '/^elif/ {print $5}' "$0" | sort | tr "\n" " ")" ; fi
+else printf "Stations available:\n%s\n" "$(awk '/^elif/ {print $5}' "$0" | sort | tr "\n" " ")" ; fi
