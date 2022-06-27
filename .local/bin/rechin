@@ -9,14 +9,14 @@ if [ ! -d "$PWD/$application" ] && [ ! -d "$PWD/$application/$site_domain" ]; th
     exit 0
 fi
 
-for board in $(ls $application/$site_domain/)
+for board in $(ls "$application/$site_domain/")
 do
 	loop_count=1
-	total_count=$(ls $application/$site_domain/$board | wc -l)
-	for thread in $(ls $application/$site_domain/$board | cut -f1 -d" " | tac)
+	total_count=$(ls "$application/$site_domain/$board" | wc -l)
+	for thread in $(ls "$application/$site_domain/$board" | cut -f1 -d" " | tac)
 	do
 		$application "https://$site/$board/thread/$thread"
 		printf "\nLoop count: %s/%s\n" "$loop_count" "$total_count"
-		loop_count=$(expr $loop_count + 1)
+		loop_count=$(( loop_count + 1 ))
 	done
 done
