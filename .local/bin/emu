@@ -2,9 +2,7 @@
 
 # functions
 function _available_options {
-	printf "Retroarch Launcher, cores available:\n"
-	sed -n '/^case/,/^esac$/p' "$0" | grep ')' | grep -v '*)' | cut -f1 -d\) | sort | xargs
-	exit 1
+	printf "Retroarch Launcher, cores available:\n%s" "$(sed -n '/^case/,/^esac$/p' "$0" | grep ')' | grep -v '*)' | cut -f1 -d')' | xargs)"
 	}
 
 function _launch {
