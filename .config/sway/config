@@ -24,7 +24,8 @@ smart_gaps on
 gaps inner 6
 gaps outer 0
 seat seat0 hide_cursor 5000
-seat seat0 xcursor_theme "We10XOS-cursors"
+# seat seat0 xcursor_theme "We10XOS-cursors"
+seat seat0 xcursor_theme "Posy_Cursor" 32
 xwayland disable
 
 ### Output configuration
