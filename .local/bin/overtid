@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# variables
+time_input="$1"
+time_start="09:00"
+time_end="17:30"
+start="$(date -d "Yesterday $time_input" "+%s")"
+
+# check for arguments
+if [ $# -eq 0 ]; then
+	script="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
+	printf "Decimal overtime calculator\\nUsage: %s HH:MM\\n" "${script%.*}"
+	exit 1
+fi
+
+# main logic
+if [ "${time_start:0:2}" -gt "${time_input:0:2}" ]; then
+	end="$(date -d "Yesterday $time_start" "+%s")"
+	printf "Early start: %s hours\\n" "$(date -d\@$((end - start)) -u +'scale=2; %H + %M/60' | bc)"
+else
+	end="$(date -d "Yesterday $time_end" "+%s")"
+	printf "Late finish: %s hours\\n" "$(date -d\@$((start - end)) -u +'scale=2; %H + %M/60' | bc)"
+fi
