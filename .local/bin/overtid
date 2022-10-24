@@ -8,8 +8,7 @@ start="$(date -d "Yesterday $time_input" "+%s")"
 
 # check for arguments
 if [ $# -eq 0 ]; then
-	script="$(basename "$(readlink -f "${BASH_SOURCE[0]}")")"
-	printf "Decimal overtime calculator\\nUsage: %s HH:MM\\n" "${script%.*}"
+	printf "Decimal overtime calculator\\nUsage: %s HH:MM\\n" "${0##*/}"
 	exit 1
 fi
 
