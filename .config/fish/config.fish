@@ -8,7 +8,7 @@ set fish_greeting
 function __fish_command_not_found_handler --on-event fish_command_not_found; echo "fish: Unknown command '$argv'"; end
 
 # Default application
-set -gx BROWSER qutebrowser
+set -gx BROWSER brave
 set -gx EDITOR nvim
 set -gx READER mupdf
 set -gx TERMINAL alacritty
@@ -56,7 +56,7 @@ function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function wallet; rbw get "2miners" | atto "$argv"; end
-function ytsearch; mpv "ytdl://ytsearch:\"$argv\""; end
+function youtube; mpv "ytdl://ytsearch:\"$argv\""; end
 
 # Rclone config symlink
 if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/dockerfiles/rclone.conf"; ln -s "$SYNCDIR/src/dockerfiles" "$XDG_CONFIG_HOME/rclone"; end
