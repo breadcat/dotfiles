@@ -1,0 +1,24 @@
+#!/bin/bash
+
+library="$(awk '/-----/{y=1;next}y' "$HOME/vault/src/blog.$DOMAIN/content/music.md")"
+function _play() {
+	if [ -z "$1" ]
+		then
+			echo "Selection is empty, quitting"
+			exit 1
+		fi
+	mpv --volume=100 --no-video --ytdl-format=bestaudio ytdl://ytsearch:"$1 audio"
+	}
+function find_song() {
+	choice=$(printf "%s" "$library" | fzf)
+	_play "$(echo "$choice" | tr "\|" "-")"
+	}
+function main {
+	case "$1" in
+		alb|album) find_album ;;
+		gen|genre) find_genre ;;
+		*) find_song ;;
+	esac
+}
+
+main "$@"
