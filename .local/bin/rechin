@@ -9,14 +9,17 @@ if [ ! -d "$PWD/$application" ] && [ ! -d "$PWD/$application/$site_domain" ]; th
     exit 0
 fi
 
+size_previous="$(du "$application" -s | awk '{print $1}')"
 for board in $(ls "$application/$site_domain/")
 do
 	loop_count=1
-	total_count=$(ls "$application/$site_domain/$board" | wc -l)
+	total_count=$(find "$application/$site_domain/$board" -mindepth 1 -maxdepth 1 -type d | wc -l)
 	for thread in $(ls "$application/$site_domain/$board" | cut -f1 -d" " | tac)
 	do
 		$application "https://$site/$board/thread/$thread"
-		printf "\nLoop count: %s/%s\n" "$loop_count" "$total_count"
+		printf "Loop count: %s/%s\n" "$loop_count" "$total_count"
 		loop_count=$(( loop_count + 1 ))
 	done
 done
+size_after="$(du "$application" -s | awk '{print $1}')"
+printf "Size increase: %s\n" "$((size_after - size_previous))"
