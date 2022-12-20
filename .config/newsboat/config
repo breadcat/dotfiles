@@ -16,6 +16,7 @@ bind-key N prev-unread
 
 # macros
 macro m set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
+macro k set browser "youtube-kodi %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 
 # ttrss config
 urls-source "ttrss"

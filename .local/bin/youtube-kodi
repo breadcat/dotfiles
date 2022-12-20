@@ -1,0 +1,11 @@
+#!/bin/sh
+
+url=$(yt-dlp -f b -g --no-playlist "$1")
+if (pidof kodi.bin);
+then
+	address=127.0.0.1
+else
+	address=$(grep htpc -A3 "$HOME/.ssh/config" | awk '/Hostname/ {print $2}')
+fi
+
+kodi-send --host="$address" -a "PlayMedia($url,[noresume])"
