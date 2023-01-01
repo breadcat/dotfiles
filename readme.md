@@ -6,7 +6,7 @@ These configuration files are all managed using a bare git repository, [as outli
 - Distro: `archlinux`
 
 - Audio player: `cmus`
-- AUR helper: `paru`
+- AUR helper: `yay`
 - Chat client: `profanity`
 - Colour Scheme: [default @ terminal.sexy](http://terminal.sexy/)
 - Document viewer: `zathura`
@@ -23,7 +23,7 @@ These configuration files are all managed using a bare git repository, [as outli
 - Video player: `mpv`
 - Wallet: `atto`
 - Wallpaper: `#5e686d`
-- Web browser: `qutebrowser`
+- Web browser: `firefox`
 - Window manager: `sway`
 
 ## Deploying
