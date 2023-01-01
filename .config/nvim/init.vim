@@ -13,6 +13,10 @@ set number
 set title
 set titlestring=%f\ %m
 set whichwrap+=<,>,h,l,[,]
+set list listchars=nbsp:¬,tab:»·,trail:·,extends:>
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 syntax on
 
 " Key remapping
