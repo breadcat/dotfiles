@@ -8,7 +8,7 @@ set fish_greeting
 function __fish_command_not_found_handler --on-event fish_command_not_found; echo "fish: Unknown command '$argv'"; end
 
 # Default application
-set -gx BROWSER brave
+set -gx BROWSER firefox
 set -gx EDITOR nvim
 set -gx READER mupdf
 set -gx TERMINAL alacritty
@@ -50,7 +50,6 @@ function mcd; mkdir -p "$argv" && cd "$argv" ; end
 function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv) ; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
 function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
-# function mount-exfat; sudo mount -o rw,users,uid=(id -u) "$argv[1]" "$argv[2]"; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
