@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ "$#" -eq 0 ]
+then
+	echo "No URI argument supplied, using clipboard"
+	uri="$(wl-paste | awk -F'?' '{print $1}')"
+else
+	uri="$(echo "$1" | awk -F'?' '{print $1}')"
+fi
+
+folder="$(curl -s "$uri" | grep \<title\> | tr -d "\(\)'" | sed -e 's/<[^>]*>//g' | awk -F'/' '{print $1}' | xargs)"
+
+mkdir -p "$folder" || exit
+cd "$folder" || exit
+printf "Downloading %s... " "$folder"
+python3 "$HOME/.local/bin/imgs.py" "$uri"
+printf "done\\n"
+
+printf "Downloaded %s files... " "$(find . -type f | wc -l)"
+printf "done \\n"
