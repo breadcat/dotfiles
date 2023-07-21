@@ -8,7 +8,7 @@ set fish_greeting
 function __fish_command_not_found_handler --on-event fish_command_not_found; echo "fish: Unknown command '$argv'"; end
 
 # Default application
-set -gx BROWSER firefox
+set -gx BROWSER brave
 set -gx EDITOR nvim
 set -gx READER mupdf
 set -gx TERMINAL alacritty
@@ -23,6 +23,7 @@ set -gx SYNCDIR $HOME/vault
 fish_add_path "$HOME/.local/bin"
 set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx LESSHISTFILE "-"
+set -gx MOZ_ENABLE_WAYLAND "1"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 set -gx XDG_DATA_HOME "$HOME/.local/share"
 set -gx XDG_DESKTOP_DIR "$HOME"
@@ -33,26 +34,29 @@ if test ! (command -v sudo); alias sudo="doas"; end
 alias crontab='$EDITOR "$XDG_CONFIG_HOME/cron/crontab" && /usr/bin/crontab "$XDG_CONFIG_HOME/cron/crontab"'
 alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | fzf --preview "cat {}" --layout reverse | xargs -r "$EDITOR"'
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
-alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty'
+alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty -print'
 alias mpv-hdmi='mpv --fs --volume=100 --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
 alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
 alias todo='find "$SYNCDIR" -maxdepth 3 -type f -name 'todo.txt' -exec $EDITOR {} \;'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.git" | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
+alias week='date +%V'
+alias wget='wget --no-hsts'
 
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
+function book; grep -i "$argv" "$SYNCDIR/src/blog.$DOMAIN/content/reading-list.md" ; end
 function cheat; curl -s "http://cheat.sh/$argv" ; end
 function crypto-sum; rbw get 'crypto purchases' | awk '/^20/ {print $2}' | paste -sd+ | math ; end
 function dos2unix; sed -i 's/\r//' "$argv" ; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
-function mcd; mkdir -p "$argv" && cd "$argv" ; end
 function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv) ; end
+function mcd; mkdir -p "$argv" && cd "$argv" ; end
 function mergeinto; rsync --progress --remove-source-files -av "$argv[1]" "$argv[2]" && find "$argv[1]" -empty -delete ; end
 function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
-function sudo; if test "$argv" = !!; eval command sudo $history[1]; else; command sudo $argv; end; end
+function sudo; if test "$argv" = !!; eval command doas $history[1]; else; command doas $argv; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function wallet; rbw get "2miners" | atto "$argv"; end
 function youtube; mpv "ytdl://ytsearch:\"$argv\""; end
