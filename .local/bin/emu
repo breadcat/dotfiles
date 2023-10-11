@@ -1,42 +1,58 @@
 #!/bin/bash
 
-# functions
-function _available_options {
-	printf "Retroarch Launcher, cores available:\n%s" "$(sed -n '/^case/,/^esac$/p' "$0" | grep ')' | grep -v '*)' | cut -f1 -d')' | xargs)"
-	}
+# variables
+rclone_source="myrient-ftp"
+# dependencies=("rclone" "mount-zip" "retroarch")
+# cores=$(grep core $0)
 
-function _launch {
-	core_selection="$1"
-	rom_selection="$3"
-	# core_directory="$(awk -F\" '/libretro_directory/ {print $2}' "$XDG_CONFIG_HOME/retroarch/retroarch.cfg" | sed "s/\~/\$HOME/g")"
-	arguments=(-L "$HOME/.config/retroarch/cores/$core_selection"_libretro.so "$rom_selection" --verbose)
-	printf "Launching %s with %s\n" "$(basename "$rom_selection")" "$core_selection"
-	retroarch "${arguments[@]}"
-	}
+# check for remote
+# if ! $(rclone listremotes | grep $rclone_source)
 
-# case loop
+#	games_db+=("cores" "bios" "clean" "dependencies")
+
 case "$1" in
-	2600) _launch stella "$@" ;;
-	3ds) _launch citra "$@" ;;
-	ast) _launch hatari "$@" ;;
-	dos) _launch dosbox_pure "$@" ;;
-	gb) _launch sameboy "$@" ;;
-	gba) _launch mgba "$@" ;;
-	gbc) _launch sameboy "$@" ;;
-	gcn) _launch dolphin "$@" ;;
-	mame) _launch mame "$@" ;;
-	n64) _launch mupen64plus_next "$@" ;;
-	nds) _launch melonds "$@" ;;
-	nes) _launch mesen "$@" ;;
-	nvb) _launch mednafen_vb "$@" ;;
-	pce) _launch mednafen_pce "$@" ;;
-	ps1) _launch duckstation "$@" ;;
-	ps2) _launch pcsx2 "$@" ;;
-	psp) _launch ppsspp "$@" ;;
-	sat) _launch mednafen_saturn "$@" ;;
-	sdc) _launch flycast "$@" ;;
-	sfc) _launch snes9x "$@" ;;
-	smd) _launch genesis_plus_gx "$@" ;;
-	wii) _launch dolphin "$@" ;;
-	*) _available_options &
+	2600) path="No-Intro/Atari - 2600" && core="stella" ;;
+	3ds) path="No-Intro/Nintendo - Nintendo 3DS (Decrypted)" && core="citra" ;;
+	dmg) path="No-Intro/Nintendo - Game Boy" && core="sameboy" ;;
+	gba) path="No-Intro/Nintendo - Game Boy Advance" && core="mgba" ;;
+	gbc) path="No-Intro/Nintendo - Game Boy Color" && core="sameboy" ;;
+	n64) path="No-Intro/Nintendo - Nintendo 64 (BigEndian)" && core="mupen64plus_next" ;;
+	nds) path="No-Intro/Nintendo - Nintendo DS (Decrypted)" && core="melonds" ;;
+	nes) path="No-Intro/Nintendo - Nintendo Entertainment System (Headerless)" && core="mesen" ;;
+	ngc) path="Redump/Nintendo - GameCube - NKit RVZ [zstd-19-128k]" && core="dolphin" ;;
+	ps1) path="Redump/Sony - PlayStation" && core="swanstation" ;;
+	ps2) path="Redump/Sony - PlayStation 2" && core="pcsx2" ;;
+	psp) path="Redump/Sony - PlayStation Portable" && core="ppsspp" ;;
+	sdc) path="Redump/Sega - Dreamcast" && core="flycast" ;;
+	smcd) path="Redump/Sega - Mega CD & Sega CD" && core="genesis_plus_gx" ;;
+	smd) path="No-Intro/Sega - Mega Drive - Genesis" && core="genesis_plus_gx" ;;
+	snes) path="No-Intro/Nintendo - Super Nintendo Entertainment System" && core="snes9x" ;;
+	wii) path="Redump/Nintendo - Wii - NKit RVZ [zstd-19-128k]" && core="dolphin" ;;
+	*) printf "Systems available: %s\\n" "$(grep -E 'path.*core' "$0" | cut -f1 -d")" | xargs)" && exit 0 ;;
 esac
+
+printf "Mounting directory..."
+temp_directory=$(mktemp -d)
+cd "$temp_directory" || exit
+mkdir -p mount archive
+rclone mount "$rclone_source":"$path" mount --daemon
+printf "done\\n"
+
+printf "Mounting ROM..."
+mount-zip --precache "mount/$(rclone lsf "$rclone_source":"$path" | fzf --prompt "$1>" )" archive
+printf "done\\n"
+
+printf "Finding ROM..."
+romfile="$(find archive -type f -print | head -1)"
+printf "%s done \\n" "$romfile"
+
+printf "Launching %s with %s..." "$romfile" "$core"
+retroarch -L "$HOME/.config/retroarch/cores/${core}_libretro.so" "$romfile"
+printf "done\\n"
+
+printf "Tidying up..."
+umount archive
+sleep 1s
+fusermount -uz mount
+rm -r "$temp_directory"
+printf "done\\n"
