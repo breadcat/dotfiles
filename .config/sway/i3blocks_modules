@@ -17,7 +17,7 @@ case "$1" in
 	crypto)
 		check_online
 		change() { printf "%0.1f" "$(curl --silent --request GET --url "https://api.coincap.io/v2/assets/$1" | jq -r '.data.changePercent24Hr')" ; }
-		printf " %sN %sM %sX\n" "$(change nexo)" "$(change monero)" "$(change nano)"
+		printf " %sN %sB %sX\n" "$(change nexo)" "$(change bitcoin)" "$(change nano)"
 		;;
 	backlight)
 		printf " %s\n" "$(brightnessctl i | awk '/Current/ {print $4}' | strip_chars)"
