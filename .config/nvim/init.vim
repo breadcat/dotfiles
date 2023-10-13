@@ -24,6 +24,11 @@ map <C-H> <C-W>
 map <C-Del> X<Esc>ce<del>
 map <F8> :setlocal spell! spelllang=en_gb<CR>
 
+" Abbreviations
+:iab <expr> _date strftime("%F")
+:iab <expr> _time strftime("%H:%M")
+:iab <expr> _stamp strftime("%F\T%H:%M:00")
+
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritepre * %s/\n\+\%$//e
