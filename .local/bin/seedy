@@ -1,0 +1,12 @@
+#!/bin/sh
+
+remote="$(rclone listremotes | grep seed)"
+if [ -z ${1+x} ]; then
+	destination="$HOME"
+else
+	destination="$1"
+fi
+
+selection="$(rclone lsf "$remote" | fzf)"
+printf "Copying %s to %s...\n" "$selection" "$destination"
+rclone copyto "$remote""$selection" "$destination" --verbose

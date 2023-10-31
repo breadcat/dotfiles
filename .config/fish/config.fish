@@ -8,7 +8,7 @@ set fish_greeting
 function __fish_command_not_found_handler --on-event fish_command_not_found; echo "fish: Unknown command '$argv'"; end
 
 # Default application
-set -gx BROWSER brave
+set -gx BROWSER firefox
 set -gx EDITOR nvim
 set -gx READER mupdf
 set -gx TERMINAL alacritty
