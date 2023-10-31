@@ -9,4 +9,4 @@ fi
 
 selection="$(rclone lsf "$remote" | fzf)"
 printf "Copying %s to %s...\n" "$selection" "$destination"
-rclone copyto "$remote""$selection" "$destination" --verbose
+rclone copy "$remote""$selection" "$destination" --verbose
