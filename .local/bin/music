@@ -1,23 +1,27 @@
 #!/bin/bash
 
 library="$(awk '/-----/{y=1;next}y' "$HOME/vault/src/blog.$DOMAIN/content/music.md")"
+artists="$(printf %s "$library" | awk -F"|" '{print $2}')"
+titles="$(printf %s "$library" | awk -F"[][]" '{print $2}')"
+
 function _play() {
-	if [ -z "$1" ]
-		then
-			echo "Selection is empty, quitting"
-			exit 1
-		fi
-	mpv --volume=100 --no-video --ytdl-format=bestaudio ytdl://ytsearch:"$1 audio"
-	}
+	if [ -z "$1" ]; then
+		echo "Selection is empty, quitting"
+		exit 1
+	fi
+	printf "Playing %s\\n" "$1"
+	mpv --volume=75 --no-video --ytdl-format=bestaudio ytdl://ytsearch:"$1 audio"
+}
 function find_song() {
-	choice=$(printf "%s" "$library" | fzf)
-	_play "$(echo "$choice" | tr "\|" "-")"
-	}
+	choice=$(paste <(echo "$artists") <(echo "$titles") --delimiters '' | fzf)
+	_play "$choice"
+}
 function main {
 	case "$1" in
-		alb|album) find_album ;;
-		gen|genre) find_genre ;;
-		*) find_song ;;
+	a | alb | album) find_album ;;
+	g | gen | genre) find_genre ;;
+	p | pls | playlist) gen_playlist ;;
+	*) find_song ;;
 	esac
 }
 
