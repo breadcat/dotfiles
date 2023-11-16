@@ -16,12 +16,20 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 	directory_temp="$(mktemp -d)"
 	rclone mount "$phone_remote": "$directory_temp" --daemon
 	cd "$directory_temp" || exit
-	echo "Sorting pictures..."
-	phockup "$directory_temp/DCIM/Camera" "$destination/photos/" -m
-	echo "Sorting screenshots..."
-	mv "$directory_temp/Pictures/Screenshots/*" "$destination/screenshots/" -vi
+	if [ -d "$directory_temp/DCIM/Camera" ]; then
+		echo "Sorting pictures..."
+		phockup "$directory_temp/DCIM/Camera" "$destination/photos/" -m
+	else
+		echo "DCIM Camera directory does not exist, skipping."
+	fi
+	if [ -d "$directory_temp/Pictures/Screenshots" ]; then
+		echo "Sorting screenshots..."
+		find "$directory_temp/Pictures/Screenshots" -exec mv '{}' "$destination/screenshots/" -vi \;
+	else
+		echo "Pictures Screenshots directory does not exist, skipping."
+	fi
 	echo "Tidying up..."
-	rm -rf "$directory_temp/DCIM/.thumbnails"
+	rm -rf "$directory_temp/DCIM/.thumbnails" "$directory_temp/Pictures/.thumbnails"
 	find "$directory_temp" -maxdepth 2 -type d -not -path "*/\.*" -empty -delete -print 2>/dev/null
 	echo "Unmounting storage..."
 	sleep 2s
