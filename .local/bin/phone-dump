@@ -24,7 +24,7 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 	fi
 	if [ -d "$directory_temp/Pictures/Screenshots" ]; then
 		echo "Sorting screenshots..."
-		find "$directory_temp/Pictures/Screenshots" -exec mv '{}' "$destination/screenshots/" -vi \;
+		find "$directory_temp/Pictures/Screenshots" -type f -exec mv '{}' "$destination/screenshots/" -vi \;
 	else
 		echo "Pictures Screenshots directory does not exist, skipping."
 	fi
