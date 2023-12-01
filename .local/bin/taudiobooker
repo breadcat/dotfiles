@@ -1,0 +1,118 @@
+#!/bin/bash
+
+# functions
+# strip chars: awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0}'
+function dependencies {
+	dependencies=(opustags ffmpeg mp3val flakeybrakey)
+	echo "Checking dependencies..."
+	for i in "${dependencies[@]}"
+	do
+		echo -n "$i: "
+		if [[ $(command -v "$i") ]]
+		then
+			echo -e "\e[32mpresent\e[39m"
+		else
+			echo -e "\e[31mmissing\e[39m"
+		fi
+	done
+	exit 1
+	}
+
+function encode {
+	# variables
+	bitrate="20k"
+	compression="10"
+	codec="libopus"
+	extension="opus"
+	_ffmpeg="ffmpeg -hide_banner -loglevel error -nostats"
+	_ffmpeg_options=(-acodec "$codec" -ac 1 -b:a "$bitrate" -vbr on -compression_level "$compression")
+	if [ -n "$2" ]
+	then
+		if [ -f "$2" ]
+		then
+			filename="$(basename "$2" ".${2##*.}")"
+			if [ "${2##*.}" = mp3 ]
+			then
+				printf "Fixing possible source errors... "
+				mp3val -f -nb "$2" 1> /dev/null
+				printf "done\\n"
+			fi
+			printf "Encoding file... "
+			$_ffmpeg -i "$2" "${_ffmpeg_options[@]}" "$filename.$extension"
+			printf "done\\n"
+		elif [ -d "$2" ]
+		then
+			echo "Encoding directory..."
+			# apostrophe check
+			for f in *\'*
+			do
+				mv "${f}" "${f/\'/}"
+			done
+			common=$(find . -maxdepth 1 -type f | sed 's/.*\.//' | sort | uniq -ci | sort -rn | awk '{print $2;exit}')
+			if [ "$common" = mp3 ]
+			then
+				printf "Fixing possible source errors... "
+				for i in *.mp3
+				do
+					mp3val -f -nb "$i" 1> /dev/null
+				done
+				printf "done\\n"
+			fi
+			printf "Encoding file... "
+			output_filename="../${PWD##*/}.$extension"
+			$_ffmpeg -f concat -safe 0 -i <(for f in ./*."$common"; do echo "file '$PWD/$f'"; done) "${_ffmpeg_options[@]}" "$output_filename"
+			printf "done\\n"
+		else # failure state
+			printf "Not sure where we\'re working..." && exit 1
+		fi
+	else
+		printf "Encoding current directory...\\n"
+
+
+	fi
+	}
+function tagger {
+
+	# check for opustags
+	if [[ ! "$(command -v opustags)" ]]; then
+		printf "Opustags is required to run this script, please install\n"
+		exit 1
+	fi
+
+	# strip whitespace function
+	function _strip { awk '{gsub(/^[ \t]+| [ \t]+$/,""); print $0}' ; }
+
+	for i in *.opus; do
+		printf "Tagging: %s... " "$i"
+		opustags -i -D "$i"
+		opustags -i -s "GENRE=Audiobook" "$i"
+		artist=$(printf "%s" "$i" | awk -F\- '{print $1}' | _strip)
+		opustags -i -s "ARTIST=$artist" "$i"
+		if [[ "$i" == *"#"* ]]; then
+			# series
+			album=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $1}' | _strip)
+			track=$(printf "%s" "$i" | awk -F"-" '{print $2}' | awk -F"#" '{print $2}' | awk '{gsub ("^0*",""); print}' | _strip)
+			title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $3}' | _strip)
+			opustags -i -s "ALBUM=$album" "$i"
+			opustags -i -s "TRACKNUMBER=$track" "$i"
+			opustags -i -s "TITLE=$title" "$i"
+		else
+			# single
+			title=$(printf "%s" "$i" | awk -F"-" '{gsub(".opus",""); print $2}' | _strip)
+			opustags -i -s "TITLE=$title" "$i"
+		fi
+		printf "Done.\n"
+	done
+
+	}
+
+# main loop
+function main {
+	case "$1" in
+		dep) dependencies ;;
+		tag) tagger "$@" ;;
+		enc) encode "$@" ;;
+		*) echo "$0" && awk '/^function main/,/\tesac/' "$0" | awk -F"\t|)" '{print $3}' | tr -d "*" | sort | xargs ;;
+	esac
+}
+main "$@"
