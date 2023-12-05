@@ -57,6 +57,7 @@ function mount-rw; sudo mount -o rw "$argv[1]" "$argv[2]"; end
 function sessionexec; awk -v site="$argv[1]" '$0~site {print $2}' "$XDG_DATA_HOME/qutebrowser/sessions/default.yml"; end
 function split; ffmpeg -i "$argv[1]" -ss "$argv[2]" -to "$argv[3]" -c copy split-$argv[1]; end
 function sudo; if test "$argv" = !!; eval command doas $history[1]; else; command doas $argv; end; end
+function ncdu; if test -z "$argv"; eval command rclone ncdu -l . 2>/dev/null; else; command rclone ncdu -l $argv 2>/dev/null; end; end
 function vat; math "$argv + ($argv * 0.2)"; end
 function wallet; rbw get "2miners" | atto "$argv"; end
 function youtube; mpv "ytdl://ytsearch:\"$argv\""; end
