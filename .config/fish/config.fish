@@ -36,6 +36,7 @@ alias dotedit='find "$XDG_CONFIG_HOME" "$HOME/.local/bin" -maxdepth 2 -type f | 
 alias dotfiles='git --git-dir="$SYNCDIR/src/dotfiles" --work-tree="$HOME"'
 alias empties='find . -maxdepth 3 -mount -not -path "*/\.*" -empty -print'
 alias mpv-hdmi='mpv --fs --volume=100 --audio-device=alsa/hdmi:CARD=PCH,DEV=0'
+alias pacman-orphans='pacman -Qtdq | doas pacman -Rns -'
 alias screenoff='sleep 0.5s && pkill -USR1 swayidle'
 alias todo='find "$SYNCDIR" -maxdepth 3 -type f -name 'todo.txt' -exec $EDITOR {} \;'
 alias vaultedit='find "$SYNCDIR" -maxdepth 5 -type f -not -path "*/\.git" | fzf --preview "cat {}" --layout reverse | xargs -r -I{} "$EDITOR" "{}"'
