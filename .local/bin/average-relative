@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for i in *; do
+	size=$(du -s "$i" | awk '{print $1}')
+	count=$(find "$i" -type f -size +1M | wc -l)
+	echo "$((size / count)) $count $size $i"
+done | sort -nr
