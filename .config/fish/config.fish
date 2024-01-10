@@ -49,6 +49,7 @@ function book; grep -i --color=always "$argv" "$SYNCDIR/src/blog.$DOMAIN/content
 function cheat; curl -s "http://cheat.sh/$argv" ; end
 function crypto-sum; rbw get 'crypto purchases' | awk '/^20/ {print $2}' | paste -sd+ | math ; end
 function dos2unix; sed -i 's/\r//' "$argv" ; end
+function miner; doas xmrig -o xmrig.nanswap.com:3333 -a rx -k -u (rbw get --full 2miners | awk '/User/ {print $2}') -p x ; end
 function fractodec; math -s2 "$argv" ; end
 function hextodec; math "0x$argv" ; end
 function macaddr; printf "%s\n" (curl -s https://api.macvendors.com/$argv) ; end
