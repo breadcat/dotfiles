@@ -68,7 +68,12 @@ function youtube; mpv "ytdl://ytsearch:\"$argv\""; end
 if ! test -e "$XDG_CONFIG_HOME/rclone/rclone.conf"; and test -f "$SYNCDIR/src/dockerfiles/rclone.conf"; ln -s "$SYNCDIR/src/dockerfiles" "$XDG_CONFIG_HOME/rclone"; end
 
 # Prompt, inspired by Oxide by Dikiaap
-function fish_prompt; echo && set_color green; echo (dirs) && set_color normal; printf "❯ "; end
+switch (hostnamectl --static)
+	case arcadia; set prefix "htpc "
+	case atlas; set prefix "src "
+	case ilias; set prefix "nas "
+end
+function fish_prompt; echo && set_color green; echo (dirs) && set_color normal; printf "$prefix❯ "; end
 
 # Keybinds
 bind \cH backward-kill-path-component
