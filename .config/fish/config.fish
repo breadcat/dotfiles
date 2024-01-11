@@ -45,7 +45,7 @@ alias wget='wget --no-hsts'
 
 # Functions
 function backup; tar -zcvf (basename $argv)_backup-(date +%F-%H%M%S).tar.gz $argv ; end
-function book; grep -i --color=always "$argv" "$SYNCDIR/src/blog.$DOMAIN/content/reading-list.md" | sort ; end
+function book; grep -i --color=always "li.*$argv" "$SYNCDIR/src/blog.$DOMAIN/content/reading-list.md" | sed -e 's/<[^>]*>//g' ; end
 function cheat; curl -s "http://cheat.sh/$argv" ; end
 function crypto-sum; rbw get 'crypto purchases' | awk '/^20/ {print $2}' | paste -sd+ | math ; end
 function dos2unix; sed -i 's/\r//' "$argv" ; end
