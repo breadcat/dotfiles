@@ -22,6 +22,23 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 	else
 		echo "DCIM Camera directory does not exist, skipping."
 	fi
+	if [ -d "$directory_temp/Pictures/Whatsapp" ]; then
+		echo "Sorting WhatsApp..."
+		phockup "$directory_temp/Pictures/Whatsapp" "$destination/photos/" -m
+	else
+		echo "Whatsapp directory does not exist, skipping."
+	fi
+	if [ -d "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media" ]; then
+		if [ -d "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" ]; then
+			echo "Sorting WhatsApp Pictures..."
+			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" "$destination/photos/" -m
+		fi
+		if [ -d "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" ]; then
+			echo "Sorting WhatsApp Videos..."
+			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" "$destination/photos/" -m
+		fi
+		find "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media" -maxdepth 2 -type d -not -path "*/\.*" -empty -delete -print 2>/dev/null
+	fi
 	if [ -d "$directory_temp/Pictures/Screenshots" ]; then
 		echo "Sorting screenshots..."
 		find "$directory_temp/Pictures/Screenshots" -type f -exec mv '{}' "$destination/screenshots/" -vi \;
@@ -29,6 +46,7 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 		echo "Pictures Screenshots directory does not exist, skipping."
 	fi
 	echo "Tidying up..."
+	find "$destination" -type f -iname 'thumbs.db' -delete -print
 	rm -rf "$directory_temp/DCIM/.thumbnails" "$directory_temp/Pictures/.thumbnails"
 	find "$directory_temp" -maxdepth 2 -type d -not -path "*/\.*" -empty -delete -print 2>/dev/null
 	echo "Unmounting storage..."
