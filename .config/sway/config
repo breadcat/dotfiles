@@ -90,7 +90,7 @@ input * {
     bindsym $mod+e exec "$TERMINAL" -e lf $HOME
     # bindsym $mod+shift+e exec "$TERMINAL" -e ncdu $HOME
     bindsym $mod+t exec "$TERMINAL"
-    bindsym $mod+Shift+w exec "$BROWSER --target private-window"
+    bindsym $mod+Shift+w exec "$BROWSER --incognito"
     bindsym $mod+d exec alacritty --class 'launcher' --command bash -c 'compgen -c | sort -u | fzf | xargs -r swaymsg -t command exec'
     for_window [app_id="^launcher$"] floating enable
 
