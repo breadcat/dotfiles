@@ -1,0 +1,22 @@
+#!/bin/bash
+
+old_current=$(tail -1 "$0" | awk '{print $3}')
+old_previous=$(tail -1 "$0" | awk '{print $4}')
+old_miles=$(tail -1 "$0" | awk '{print $5}')
+
+read -rp "Enter current car odometer ($old_current): " current
+if [ -z "${current}" ]; then current="$old_current"; fi
+read -rp "Enter previous month odometer ($old_previous): " previous
+if [ -z "${previous}" ]; then current="$old_previous"; fi
+read -rp "Enter business miles for month ($old_miles): " miles
+if [ -z "${miles}" ]; then current="$old_miles"; fi
+
+banked="$(echo "($miles + $previous) - $current" | bc)"
+lie_miles="$(shuf -i 5-15 -n 1)"
+lie="$(echo "$previous" + "$miles" + "$lie_miles" | bc)"
+printf "\nYou have %s miles in the bank.\nEnter %s as your month end." "$banked" "$lie"
+
+datestamp=$(date +"%Y-%m-%dT%H:%M:%S%z")
+printf "# %s %s %s %s %s" "$datestamp" "$current" "$previous" "$miles" "$banked">> "$0"
+
+exit
