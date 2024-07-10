@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# variables
+base_directory="/mnt"
+
+# check for root
+if [ "$EUID" -ne 0 ]; then echo "Please run this script as root" && exit 0; fi
+
+# junk files
+printf "Removing junk files...\n"
+find "$base_directory/" -iname "*:Zone.Identifier" -print -delete
+find "$base_directory/" -iname "Thumbs.db" -print -delete
+find "$base_directory/" -iname "Thumbs.db:encryptable" -print -delete
+
+# duplicates
+printf "Checking for duplicates...\n"
+jdupes "$base_directory"/pictures -rd
+jdupes "$base_directory"/paperwork -rd
+
+# empty directories
+printf "Removing empty directories...\n"
+find "$base_directory" -not -name 'lost+found' -type d -empty -print -delete
