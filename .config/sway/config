@@ -105,6 +105,9 @@ input * {
     bindsym $mod+Shift+tab workspace prev_on_output
     bindsym mod1+tab exec swaymsg [con_id=$(swaymsg -t get_tree | ~/.config/sway/alt-tab t)] focus
     bindsym mod1+shift+tab exec swaymsg [con_id=$(swaymsg -t get_tree | ~/.config/sway/alt-tab f)] focus
+    bindsym Print exec grim
+    bindsym Shift+Print exec grim -g "$(slurp)"
+
 
 
 
