@@ -16,7 +16,7 @@ bind-key N prev-unread
 
 # macros
 macro m set browser "comicviewer %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
-macro k set browser "youtube-kodi %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
+macro k set browser "kodi-youtube %u" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 macro y set browser "yt-dlp %u -f 'bestvideo[height<=720][fps<=?30]+bestaudio/best'" ; open-in-browser-and-mark-read ; set browser "$BROWSER %u"
 
 # ttrss config
