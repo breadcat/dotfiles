@@ -21,7 +21,6 @@ set -gx SYNCDIR $HOME/vault
 
 # Exports to move certain files around
 fish_add_path "$HOME/.local/bin"
-set -gx GNUPGHOME "$XDG_DATA_HOME/gnupg"
 set -gx LESSHISTFILE "-"
 set -gx MOZ_ENABLE_WAYLAND "1"
 set -gx XDG_CONFIG_HOME "$HOME/.config"
