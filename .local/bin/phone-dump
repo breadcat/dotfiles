@@ -18,14 +18,14 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 	cd "$directory_temp" || exit
 	if [ -d "$directory_temp/DCIM/Camera" ]; then
 		echo "Sorting pictures..."
-		phockup "$directory_temp/DCIM/Camera" "$destination/photos/" -m
+		phockup "$directory_temp/DCIM/Camera" "$destination/" -m
 	else
 		echo "DCIM Camera directory does not exist, skipping."
 	fi
 	if [ -d "$directory_temp/Pictures/Whatsapp" ]; then
 		echo "Sorting WhatsApp..."
 		find "$directory_temp/Pictures/Whatsapp" -name '.nomedia*' -delete
-		phockup "$directory_temp/Pictures/Whatsapp" "$destination/photos/" -m
+		phockup "$directory_temp/Pictures/Whatsapp" "$destination/" -m
 	else
 		echo "Whatsapp directory does not exist, skipping."
 	fi
@@ -33,12 +33,12 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 		if [ -d "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" ]; then
 			echo "Sorting WhatsApp Pictures..."
 			find "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" -name '.nomedia*' -delete
-			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" "$destination/photos/" -m
+			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Images" "$destination/" -m
 		fi
 		if [ -d "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" ]; then
 			echo "Sorting WhatsApp Videos..."
 			find "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" -name '.nomedia*' -delete
-			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" "$destination/photos/" -m
+			phockup "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp Video" "$destination/" -m
 		fi
 		find "$directory_temp/Android/media/com.whatsapp/WhatsApp/Media" -maxdepth 2 -type d -not -path "*/\.*" -empty -delete -print 2>/dev/null
 	fi
