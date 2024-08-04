@@ -1,0 +1,11 @@
+#!/bin/sh
+
+ssh=htpc
+
+ssh $ssh systemctl stop kodi
+ssh $ssh pactl load-module module-udev-detect
+output=$(ssh $ssh pactl list short sinks | awk '/^1/ {print $2}')
+ssh $ssh pactl set-default-sink "$output"
+input=$(ssh $ssh pactl list short sources | awk '/bluez/ {print $2}')
+ssh $ssh pactl set-default-source "$input"
+ssh $ssh systemctl start kodi
