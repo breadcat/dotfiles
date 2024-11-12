@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # variables
 phone_remote=phone
@@ -21,6 +21,12 @@ if ping -c 1 "$phone_ip" &>/dev/null; then
 		phockup "$directory_temp/DCIM/Camera" "$destination/" -m
 	else
 		echo "DCIM Camera directory does not exist, skipping."
+	fi
+	if [ -d "$directory_temp/Pictures" ]; then
+		echo "Sorting pictures..."
+		phockup "$directory_temp/Pictures" "$destination/" -m
+	else
+		echo "Pictures directory does not exist, skipping."
 	fi
 	if [ -d "$directory_temp/Pictures/Whatsapp" ]; then
 		echo "Sorting WhatsApp..."
